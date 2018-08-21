@@ -1,8 +1,10 @@
 class LessonsController < ApplicationController
   def index
+    @lessons = Lesson.all
   end
 
   def show
+    find_lesson
   end
 
   def new
@@ -19,4 +21,11 @@ class LessonsController < ApplicationController
 
   def destroy
   end
+
+    private
+
+  def find_lesson
+    @lesson = Lesson.find(params[:id])
+  end
+
 end

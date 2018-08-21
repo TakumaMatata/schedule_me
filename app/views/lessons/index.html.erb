@@ -1,7 +1,14 @@
 <h1>Lessons#index</h1>
 <p>Find me in app/views/lessons/index.html.erb</p>
 
-<%= week_calendar do |date| %>
-<%= date %>
+<%= week_calendar events: @lessons do |date, lessons| %>
+  <%= date %>
+
+  <% lessons.each do |lesson| %>
+    <div>
+      <%= lesson.course.language %>
+      <%= lesson.course.level %>
+    </div>
+  <% end %>
 <% end %>
 
