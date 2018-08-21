@@ -3,12 +3,26 @@
 <div class="banner">
   <div class="banner-content text-center">
     <h1>scheduleMe</h1>
-    <p>
-  <span id="banner-typed-text"></span>
-</p>
-    <%= link_to "Start now", new_user_session_path, class: "btn btn-lg btn-primary"  %>
+    <p><span id="banner-typed-text"></span></p>
+    <div class="form-inputs">
+      <%= simple_form_for(:user, :url => session_path(:user)) do |f| %>
+        <%= f.text_field :email,
+          class: "form-control",
+          placeholder: "scheduleme@gmail.com"%>
+        <%= f.password_field :password,
+          class: "form-control",
+          placeholder: "••••••"%>
+        <%= f.check_box :remember_me%>
+        <%= f.label :remember_me %>
+        <%= link_to "Forgot your password?", new_password_path(:user) %>
+        <div>
+          <%= f.submit 'Login', class: 'btn btn-primary'%>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
+
 
 
 
