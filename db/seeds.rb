@@ -44,7 +44,7 @@ Room.create(name: "103")
 
 puts "Created #{Room.count} rooms from #{Room.first.name} to #{Room.last.name}"
 
-language = ["English"]
+language = "English"
 levels = ["Novice", "Conversational", "Business", "Advanced"]
 durations = [30, 45, 60, 90]
 terms = Term.all
@@ -55,8 +55,8 @@ terms.each do |t|
   end
 end
 
-category = ["student"]
-description = ["some description"]
+category = "student"
+description = "some description"
 
 50.times do
   Student.create(name: Faker::HarryPotter.character, birth_date: Faker::Time.between(50.years.ago, 6.years.ago, period = :all), category: category, description: description)
