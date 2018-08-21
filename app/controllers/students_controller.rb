@@ -12,7 +12,12 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = Student.new
+    @student = Student.new(student_params)
+    if @student.save
+      redirect_to students_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -40,7 +45,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
   end
 
-  def lesson_params
+  def student_params
     params.require(:student).permit(:name, :birth_date, :category, :description)
   end
 end
