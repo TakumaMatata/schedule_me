@@ -6,6 +6,7 @@
 
   <% lessons.each do |lesson| %>
     <div>
+      <%= lesson.start_time.strftime('%H') %> <%= lesson.start_time.strftime('%M') %>
       <%= lesson.course.language %>
       <%= lesson.course.level %>
     </div>
