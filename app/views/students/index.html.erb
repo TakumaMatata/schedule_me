@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4">
       <% @students.each do |student| %>
-      <%= link_to student.name , students_show_path(student) %>
+      <%= link_to student.name, student_path(student) %>
       <br>
       <% end %>
     </div>
