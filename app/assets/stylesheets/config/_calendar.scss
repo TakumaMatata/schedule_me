@@ -21,4 +21,14 @@
 
   .has-events {}
 
+  .room {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .lesson-card {
+    background-color: $blue;
+    margin: 3px;
+  }
+
 }
