@@ -2,20 +2,23 @@ class LessonsController < ApplicationController
   before_action :find_lesson, only: [:show, :edit, :update]
 
   def index
-    @lessons = Lesson.all
+    @lessons = policy_scope(Lesson)
     @rooms = Room.all
 
   end
 
   def show
+    authorize @lesson
   end
 
   def new
     @lesson = Lesson.new
+    authorize @lesson
   end
 
   def create
     @lesson = Lesson.new(lesson_params)
+    authorize @lesson
     if @lesson.save
       redirect_to lessons_path
     else
@@ -24,10 +27,12 @@ class LessonsController < ApplicationController
   end
 
   def edit
+    authorize @lesson
   end
 
   def update
     @lesson.update(lesson_params)
+    authorize @lesson
     if @lesson.save
       redirect_to lesson_path(@lesson)
     else
@@ -37,6 +42,7 @@ class LessonsController < ApplicationController
 
   def destroy
     @lesson.destroy
+    authorize @lesson
     redirect_to lessons_path
   end
 
