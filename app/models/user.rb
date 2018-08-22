@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   has_many :courses
   has_many :lessons
-  validates :user_name, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true
   validates :password, presence: true, length: {in: 6..20}
   validates :first_name, presence: true, length: { minimum: 2}
