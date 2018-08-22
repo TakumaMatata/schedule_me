@@ -5,6 +5,7 @@
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
       <%= simple_form_for(@lesson) do |form| %>
+      <input type="text" id="flatpickr-input">
         <%= form.input :start_time %>
         <%= form.association :course, collection: Course.order('level'), label_method: :course_name,  prompt: "Choose a course"
  %>
