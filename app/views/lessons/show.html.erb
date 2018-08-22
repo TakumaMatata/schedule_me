@@ -1,2 +1,16 @@
 <h1>Lessons#show</h1>
 <p>Find me in app/views/lessons/show.html.erb</p>
+<ul>
+  <li>Teacher: <%= @lesson.user.first_name %> <%= @lesson.user.last_name %></li>
+  <li>Time: <%= @lesson.start_time %></li>
+  <li>Language: <%= @lesson.course.language %></li>
+  <li>Level: <%= @lesson.course.level %></li>
+  <li>Duration: <%= @lesson.course.duration %></li>
+  <br>
+  <p>Students</p>
+  <% @lesson.enrollments.each do |enrollment| %>
+    <li><%= enrollment.student.name %></li>
+  <% end %>
+  <%= link_to "edit", edit_lesson_path(@lesson) %>
+  <%= link_to "schedule", lessons_path %>
+</ul>

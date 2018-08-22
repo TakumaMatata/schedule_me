@@ -29,7 +29,7 @@ class LessonsController < ApplicationController
   def update
     @lesson.update(lesson_params)
     if @lesson.save
-      redirect_to lessons_path
+      redirect_to lesson_path(@lesson)
     else
       render :new
     end

@@ -15,7 +15,7 @@
         <%= lesson.start_time.strftime('%H') %> <%= lesson.start_time.strftime('%M') %>
         <%= lesson.course.language %>
         <%= lesson.course.level %>
-        <%= link_to "edit", edit_lesson_path(lesson) %>
+        <%= link_to "details", lesson_path(lesson) %>
       </div>
     <% end %>
     <% end %>
