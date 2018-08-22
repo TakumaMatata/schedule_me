@@ -1,14 +1,32 @@
 <h1>Lessons#index</h1>
 <p>Find me in app/views/lessons/index.html.erb</p>
 
-<%= week_calendar events: @lessons do |date, lessons| %>
-  <%= date %>
+<%= calendar number_of_days: 1, events: @lessons do |date, lessons| %>
+  <span class="date-str"><%= date %></span>
 
-  <% lessons.each do |lesson| %>
-    <div>
-      <%= lesson.course.language %>
-      <%= lesson.course.level %>
-    </div>
+<div class = "room">
+<% @rooms.each do |room| %>
+  <p>room <%= room.name %></p>
+<table>
+<tr>
+  <td>
+    <% lessons.each do |lesson| %>
+      <% if room.id == lesson.room.id %>
+      <div class = "lesson-card">
+        <%= lesson.start_time.strftime('%H') %> <%= lesson.start_time.strftime('%M') %>
+        <%= lesson.course.language %>
+        <%= lesson.course.level %>
+      </div>
+    <% end %>
+    <% end %>
+   </td>
+  </tr>
+  </table>
   <% end %>
+  </div>
 <% end %>
 
+
+
+
+<!-- https://stackoverflow.com/questions/47811339/simple-calendar-week-calendar-by-one-day?rq=1 -->
