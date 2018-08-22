@@ -26,11 +26,11 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.update(student_params)
-    if @student.save
-      redirect_to student_show_path(@student)
-    else
-      render :new
-    end
+      if @student.save
+        redirect_to student_path(@student)
+      else
+        render :new
+      end
   end
 
   def destroy

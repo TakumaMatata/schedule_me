@@ -2,7 +2,9 @@ class LessonsController < ApplicationController
   before_action :find_lesson, only: [:show, :edit, :update]
 
   def index
-    @lessons = lesson.all
+    @lessons = Lesson.all
+    @rooms = Room.all
+
   end
 
   def show
