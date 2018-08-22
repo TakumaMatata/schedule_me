@@ -1,2 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="profile">
+  <div class="user-imformation">
+    <% if @user.photo.nil? %>
+      <i class="fas fa-user-circle"></i>
+    <% else %>
+    <%= cl_image_tag @user.photo, crop: :fill, class: "user-profile" %>
+    <% end %>
+    <%= link_to "Edit profile",  edit_user_registration_path, class: "btn btn-warning" %>
+  </div>
+</div>
