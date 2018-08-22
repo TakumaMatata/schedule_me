@@ -1,2 +1,19 @@
 <h1>Lessons#new</h1>
 <p>Find me in app/views/lessons/new.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <%= simple_form_for(@lesson) do |form| %>
+        <%= form.input :start_time %>
+        <%= form.association :course, collection: Course.order('level'), label_method: :course_name,  prompt: "Choose a course"
+ %>
+        <%= form.association :room, collection: Room.order('name'), label_method: :name,  prompt: "Choose a room"
+ %>
+        <%= form.association :user, collection: User.order('first_name'), label_method: :first_name,  prompt: "Choose a Teacher"
+ %>
+        <%= form.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
