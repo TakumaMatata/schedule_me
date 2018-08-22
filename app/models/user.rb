@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  mount_uploader :photo, PhotoUploader
+  # mount_uploader :photo, PhotoUploader
   has_many :courses
   has_many :lessons
   validates :email, uniqueness: true, presence: true
