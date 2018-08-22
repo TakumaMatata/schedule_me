@@ -15,6 +15,7 @@
         <%= lesson.start_time.strftime('%H') %> <%= lesson.start_time.strftime('%M') %>
         <%= lesson.course.language %>
         <%= lesson.course.level %>
+        <%= link_to "edit", edit_lesson_path(lesson) %>
       </div>
     <% end %>
     <% end %>
@@ -26,6 +27,7 @@
 <% end %>
 
 <%= link_to "Create New Lesson", new_lesson_path %>
+
 
 
 <!-- https://stackoverflow.com/questions/47811339/simple-calendar-week-calendar-by-one-day?rq=1 -->
