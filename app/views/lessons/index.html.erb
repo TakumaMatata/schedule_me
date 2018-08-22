@@ -1,5 +1,4 @@
-<h1>Lessons#index</h1>
-<p>Find me in app/views/lessons/index.html.erb</p>
+<h1>Lessons</h1>
 
 <%= calendar number_of_days: 1, events: @lessons do |date, lessons| %>
   <span class="date-str"><%= date %></span>
@@ -26,7 +25,7 @@
   </div>
 <% end %>
 
-
+<%= link_to "Create New Lesson", new_lesson_path %>
 
 
 <!-- https://stackoverflow.com/questions/47811339/simple-calendar-week-calendar-by-one-day?rq=1 -->
