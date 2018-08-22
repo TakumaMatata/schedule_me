@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'simple_calendar', '~> 2.3'
 gem 'faker'
 gem 'bootsnap', require: false
