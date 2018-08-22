@@ -27,9 +27,9 @@ class LessonsController < ApplicationController
   end
 
   def update
-    @lesson = Lesson.update(lesson_params)
+    @lesson.update(lesson_params)
     if @lesson.save
-      redirect_to user_lesson_path(@lesson)
+      redirect_to lessons_path
     else
       render :new
     end
