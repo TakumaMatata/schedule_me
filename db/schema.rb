@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_21_045623) do
+ActiveRecord::Schema.define(version: 2018_08_22_023143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2018_08_21_045623) do
   end
 
   create_table "memos", force: :cascade do |t|
-    t.string "type"
     t.text "comment"
     t.bigint "enrollment_id"
     t.datetime "created_at", null: false
