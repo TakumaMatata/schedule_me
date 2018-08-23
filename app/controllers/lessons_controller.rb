@@ -1,5 +1,5 @@
 class LessonsController < ApplicationController
-  before_action :find_lesson, only: [:show, :edit, :update]
+  before_action :find_lesson, only: [:show, :edit, :update, :destroy]
 
   def index
     @lessons = policy_scope(Lesson)
