@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 Memo.delete_all
 Enrollment.delete_all
 Student.delete_all
@@ -17,15 +9,15 @@ Term.delete_all
 
 puts "Deleted all the past data"
 
-# test_url = "https://kitt.lewagon.com/placeholder/users/takumamatata"
+test_url = "https://kitt.lewagon.com/placeholder/users/takumamatata"
 test_user= User.new(email: "test@gmail.com", password: "123456", first_name: "Takuma", last_name: "Naruke", role: "manager")
-# test_user.remote_photo_url = test_url
+test_user.remote_photo_url = test_url
 test_user.save
 
 10.times do
-  # url = "https://kitt.lewagon.com/placeholder/users/random"
+  url = "https://kitt.lewagon.com/placeholder/users/random"
   user_new = User.new(email: Faker::Internet.email, password: "123456", first_name: Faker::HarryPotter.character.split[0], last_name: Faker::HarryPotter.character.split[1], role: "teacher")
-  # user_new.remote_photo_url = url
+  user_new.remote_photo_url = url
   user_new.save
 end
 

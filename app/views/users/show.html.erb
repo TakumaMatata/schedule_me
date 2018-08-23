@@ -1,11 +1,13 @@
 <div class="profile">
   <div class="col-xs-12 col-sm-4 col-sm-offset-4">
     <div class="user-imformation text-center">
-    <% if @user.photo.nil? %>
-      <%= image_tag "default_icon.png", id:"default-icon" %>
-    <% else %>
-      <%= cl_image_tag @user.photo, crop: :fill, class: "user-profile" %>
-    <% end %>
+      <div class="profile_photo">
+        <% if current_user.photo.blank?%>
+          <%= image_tag "default_icon.png" %>
+        <% else %>
+          <%= cl_image_tag current_user.photo, crop: :fill %>
+        <% end %>
+      </div>
     <h3><%= @user.first_name %>  <%= @user.last_name %></h3>
     <h4><%= @user.email %></h4>
     <%= link_to "Edit profile",  edit_user_registration_path, class: "btn btn-warning" %>
