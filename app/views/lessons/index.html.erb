@@ -1,4 +1,14 @@
-<h1>Lessons</h1>
+<h3>Lessons</h3>
+
+<p>
+  Welcome, <%=@user.first_name%>!
+<% if @user.role == "manager"%>
+These are the lessons you manage.
+<% else %>
+These are your lessons.
+<% end %>
+</p>
+
 
 <%= calendar number_of_days: 1, events: @lessons do |date, lessons| %>
   <span class="date-str"><%= date %></span>
