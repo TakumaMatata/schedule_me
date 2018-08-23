@@ -14,13 +14,13 @@ class StudentPolicy < ApplicationPolicy
     # manager? || record.user == user
   end
 
-  # def new?
-  #   manager?
-  # end
+  def new?
+    manager?
+  end
 
-  # def create?
-  #   manager?
-  # end
+  def create?
+    manager?
+  end
 
   def edit?
     manager? || record.user == user
