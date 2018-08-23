@@ -1,7 +1,13 @@
 <div class="navbar-wagon <%= yield(:navbar_class) %>">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
+  <% if user_signed_in? %>
+    <%= link_to lessons_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "newlogo.png", height: 60 %>
+    <% end %>
+  <% else %>
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+      <%= image_tag "newlogo.png", height: 60 %>
+    <% end %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -44,7 +50,20 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to 'Sign Up', new_user_registration_path, class: "btn-medium" %>
+    <div class="form-inputs form-signin navbar-form">
+      <%= form_for(:user, :url => session_path(:user)) do |f| %>
+        <%= f.text_field :email,
+          class: "form-control",
+          placeholder: "scheduleme@gmail.com"%>
+        <%= f.check_box :remember_me%>
+        <%= f.label :remember_me %>
+        <%= f.password_field :password,
+          class: "form-control",
+          placeholder: "••••••"%>
+        <%= link_to "Forgot your password?", new_password_path(:user) %>
+        <span><%= f.submit 'Login', class: 'btn btn-primary'%></span>
+      <% end %>
+    </div>
     <% end %>
   </div>
 

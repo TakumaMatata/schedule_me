@@ -4,7 +4,7 @@ class LessonsController < ApplicationController
   def index
     @lessons = policy_scope(Lesson)
     @rooms = Room.all
-
+    @user = current_user
   end
 
   def show

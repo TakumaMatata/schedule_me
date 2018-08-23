@@ -1,7 +1,7 @@
 import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 
-flatpickr('#flatpickr-input');
+import "../plugins/flatpickr"
 
 loadDynamicBannerText();
 
