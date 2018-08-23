@@ -1,7 +1,15 @@
 <h1>Students#index</h1>
 <p>Find me in app/views/students/index.html.erb</p>
-
 <%= link_to "Create a new student", new_student_path  %>
+
+<div class="form-inline">
+  <%= form_tag students_path, method: :get do %>
+  <%= text_field_tag :query, params[:query], size: 30, class: "form-control", placeholder: "Search by name"%>
+  <%= button_tag "Search", type: "submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-4">

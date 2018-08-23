@@ -4,6 +4,12 @@ class StudentsController < ApplicationController
   def index
     @students = policy_scope(Student)
 
+    if params[:query].present?
+      @students = Student.search_by_name(params[:query])
+    else
+      @students = Student.all
+    end
+
   end
 
   def show
