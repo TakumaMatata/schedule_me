@@ -2,7 +2,7 @@
 <p>
 Welcome, <%=@user.first_name%>!
 <% if @user.role == "manager"%>
-These are the lessons you manage.
+These are the lessons you manage. <%= link_to "Create New Lesson", new_lesson_path %>
 <% else %>
 These are the lessons you teach.
 <% end %>
