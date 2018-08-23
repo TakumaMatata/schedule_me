@@ -32,6 +32,6 @@ class UserPolicy < ApplicationPolicy
   private
 
   def manager?
-    user.role == "manager"
+    @user.role == "manager"
   end
 end
