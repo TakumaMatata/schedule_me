@@ -14,6 +14,7 @@ gem 'rails', '5.2.1'
 gem 'redis'
 gem 'pundit'
 gem 'flatpickr'
+gem 'pg_search'
 
 
 gem 'autoprefixer-rails'
