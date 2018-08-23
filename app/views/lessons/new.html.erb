@@ -1,5 +1,4 @@
-<h1>Lessons#new</h1>
-<p>Find me in app/views/lessons/new.html.erb</p>
+<h1>Create Lessons</h1>
 
 <div class="container">
   <div class="row">
@@ -7,17 +6,22 @@
       <%= simple_form_for(@lesson) do |form| %>
 
       <%= simple_form_for :lesson, method: "get" do |f| %>
-            <%= f.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
-
-        <%= form.association :course, collection: Course.order('level'), label_method: :course_name,  prompt: "Choose a course"
- %>
-        <%= form.association :room, collection: Room.order('name'), label_method: :name,  prompt: "Choose a room"
- %>
-        <%= form.association :user, collection: User.order('first_name'), label_method: :first_name,  prompt: "Choose a Teacher"
- %>
+        <%= f.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%= form.association :course, collection: Course.order('level'), label_method: :course_name,  prompt: "Choose a course" %>
+        <%= form.association :room, collection: Room.order('name'), label_method: :name,  prompt: "Choose a room" %>
+        <%= form.association :user, collection: User.order('first_name'), label_method: :first_name,  prompt: "Choose a Teacher" %>
         <%= form.button :submit %>
           <% end %>
       <% end %>
     </div>
   </div>
 </div>
+        <select id="example-getting-started" multiple="multiple">
+            <option value="cheese">Cheese</option>
+            <option value="tomatoes">Tomatoes</option>
+            <option value="mozarella">Mozzarella</option>
+            <option value="mushrooms">Mushrooms</option>
+            <option value="pepperoni">Pepperoni</option>
+            <option value="onions">Onions</option>
+        </select>
+
