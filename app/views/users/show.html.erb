@@ -11,6 +11,7 @@
     <h3><%= @user.first_name %>  <%= @user.last_name %></h3>
     <h4><%= @user.email %></h4>
     <%= link_to "Edit profile",  edit_user_path, class: "btn btn-warning" %>
+    <p><%= link_to "delete my account", cancel_user_registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %></p>
     </div>
   </div>
 </div>
