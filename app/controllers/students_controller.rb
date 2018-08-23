@@ -11,10 +11,12 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+    authorize @student
   end
 
   def create
     @student = Student.new(student_params)
+    authorize @student
     if @student.save
       redirect_to students_path
     else
