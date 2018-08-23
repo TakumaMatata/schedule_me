@@ -24,7 +24,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    manager? || record.user == user
   end
 
   def destroy?
