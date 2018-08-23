@@ -24,11 +24,21 @@
   .room {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin: 0, auto;
+  }
+
+  .table {
+  }
+
+  .tr {
+    width: 100%
   }
 
   .lesson-card {
     background-color: $yellow;
     margin: 3px;
   }
+
 
 }
