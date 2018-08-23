@@ -7,8 +7,8 @@ These are the lessons you manage. <%= link_to "Create New Lesson", new_lesson_pa
 These are the lessons you teach.
 <% end %>
 </p>
-<%= calendar number_of_days: 1, events: @lessons do |date, lessons| %>
-<!-- <span class="date-str"><%= date %></span> -->
+<%= week_calendar events: @lessons do |date, lessons| %>
+<span class="date-str"><%= date %></span>
 <div class = "room">
 <table>
   <tr><th>h</th></tr>
@@ -32,7 +32,7 @@ These are the lessons you teach.
           <%= link_to lesson_path(lesson) do %>
           <div class = "lesson-card level-<%= lesson.course.level.downcase %>">
             <%= lesson.start_time.strftime('%H') %> <%= lesson.start_time.strftime('%M') %>
-            <%= lesson.course.language %>
+<!--             <%= lesson.course.language %> -->
             <%= lesson.course.level %>
           </div>
           <% end %>
@@ -41,7 +41,7 @@ These are the lessons you teach.
       <% end %>
   <% if vacant_cell %>
     <tr><td>
-    <div class = "lesson-card-vacant">XXXXXXXXXXXXXXXXXXXXXXXX</div>
+    <div class = "lesson-card-vacant">XXXXXXXXXXXXXXXX</div>
     </td></tr>
   <% end %>
   <% vacant_cell = true %>
