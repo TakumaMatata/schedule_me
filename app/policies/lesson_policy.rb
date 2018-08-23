@@ -1,7 +1,11 @@
 class LessonPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      if user.role =="manager"
+        scope.all
+      else
+        scope.where(user_id: user.id)
+      end
     end
   end
 
