@@ -18,13 +18,12 @@ class UserPolicy < ApplicationPolicy
   # end
 
   def edit?
-    true
-  # manager? || record.user == user
+    manager? || record == user
   # nozomi made it true bc, i got errer that says 'user' is undefined
   end
 
   def update?
-    manager? || record.user == user
+    manager? || record == user
   end
 
   def destroy?
