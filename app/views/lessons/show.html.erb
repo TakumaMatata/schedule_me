@@ -13,4 +13,7 @@
   <% end %>
   <%= link_to "edit", edit_lesson_path(@lesson) %>
   <%= link_to "schedule", lessons_path %>
+  <%= link_to lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure?" } do %>
+  <i class="fa fa-trash fa-lg" style="padding: 10px;"></i>
+  <% end %>
 </ul>
