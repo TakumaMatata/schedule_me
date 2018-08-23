@@ -1,23 +1,7 @@
-<div class = "container">
-<h3>Lessons</h3>
-
-<p>
-  Welcome, <%=@user.first_name%>!
-<% if @user.role == "manager"%>
-These are the lessons you manage.
-<% else %>
-These are the lessons you teach.
-<% end %>
-</p>
-
-
-<%= calendar number_of_days: 1, events: @lessons do |date, lessons| %>
-  <span class="date-str"><%= date %></span>
-
 <div class = "room">
 <% @rooms.each do |room| %>
 <table>
-  <tr><th>room <%= room.name %></th></tr>
+  <tr><th>rm <%= room.name %></th></tr>
     <% lessons.each do |lesson| %>
       <% if room.id == lesson.room.id %>
   <tr><td>
@@ -32,8 +16,4 @@ These are the lessons you teach.
   <% end %>
 </table>
 <% end %>
-</div>
-<% end %>
-
-<%= link_to "Create New Lesson", new_lesson_path %>
 </div>
