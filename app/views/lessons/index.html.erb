@@ -23,7 +23,7 @@ These are the lessons you teach.
 <div class = "room">
 <table>
   <tr><th>&nbsp;</th></tr>
-    <% (7..20).each do |h|%>
+    <% (10..20).each do |h|%>
     <tr><td>
     <div class = "lesson-hour">
       <%= h %>
@@ -35,7 +35,7 @@ These are the lessons you teach.
 <% vacant_cell = true %>
 <table>
   <tr><th>Room <%= room.name %></th></tr>
-    <% (7..20).each do |h|%>
+    <% (10..20).each do |h|%>
     <% lessons.each do |lesson| %>
       <% if room.id == lesson.room.id && h==lesson.start_time.strftime('%H').to_i %>
         <% vacant_cell = false %>
@@ -70,7 +70,7 @@ These are the lessons you teach.
 <div class = "room">
 <table>
   <tr><th>&nbsp;</th></tr>
-    <% (7..20).each do |h|%>
+    <% (10..20).each do |h|%>
     <tr><td>
     <div class = "lesson-hour">
       <%= h %>
@@ -82,7 +82,7 @@ These are the lessons you teach.
 <% vacant_cell = true %>
 <table>
   <tr><th>Room <%= room.name %></th></tr>
-    <% (7..20).each do |h|%>
+    <% (10..20).each do |h|%>
     <% lessons.each do |lesson| %>
       <% if room.id == lesson.room.id && h==lesson.start_time.strftime('%H').to_i %>
         <% vacant_cell = false %>
