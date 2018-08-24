@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-xs-offset-4">
-       <h1>Lesson deatails</h1>
+       <h1>Lesson details</h1>
        <ul>
          <li>Teacher: <%= @lesson.user.first_name %> <%= @lesson.user.last_name %> </li>
          <li><%= link_to "Teacher profile", user_path(@lesson.user) %></li>
@@ -13,11 +13,11 @@
          <li>Level: <%= @lesson.course.level %></li>
          <li>Duration: <%= @lesson.course.duration %></li>
          <br>
-         <p>Students</p>
+
          <% @lesson.enrollments.each do |enrollment| %>
            <li><%= enrollment.student.name %> <%= link_to "student profile", student_path(enrollment.student) %></li>
          <% end %>
-
+         <%= console %>
          <%= link_to lessons_path do %>
          <i class="fas fa-calendar-alt fa-lg" style="padding: 10px;"></i>
          <% end %>

@@ -13,6 +13,12 @@
    %>
           <%= form.association :user, collection: User.order('first_name'), label_method: :first_name,  prompt: "Choose a Teacher"
    %>
+           <label for="id_label_multiple">
+          Students <br>
+          <%= select_tag "students", options_from_collection_for_select(
+                Student.all, :id, :name),
+                class: 'select2 js-example-basic-multiple js-states form-control', id: "id_label_multiple", name: "students[]", multiple: "multiple" %>
+        </label>
           <%= form.button :submit %>
         <% end %>
       <% end %>
