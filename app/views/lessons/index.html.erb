@@ -1,6 +1,6 @@
 <div class = "container">
+<h1>Welcome, <%=@user.first_name%>!</h1>
 <p>
-Welcome, <%=@user.first_name%>!
 <% if @user.role == "manager"%>
 These are the lessons you manage. <%= link_to "Create New Lesson", new_lesson_path %>
 <% else %>
