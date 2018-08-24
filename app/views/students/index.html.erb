@@ -1,29 +1,42 @@
-<h1>------Students lists------</h1>
 
-<%= link_to "Create a new student", new_student_path  %>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <div class="form-inline">
-        <%= form_tag students_path, method: :get do %>
-        <%= text_field_tag :query, params[:query], size: 30, class: "form-control", placeholder: "Search by name"%>
-        <%= button_tag "Search", type: "submit", class: "btn btn-primary" %>
+<div class="student-idex">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+    <div class="student-list">
+      <div class="student-list-title text-center">
+        <h1>Students list</h1>
+      </div>
+
+      <div class="list-function">
+        <ul class="list-inline">
+          <li class="searchbar form-inline">
+              <%= form_tag students_path, method: :get do %>
+              <%= text_field_tag :query, params[:query], size: 30, class: "form-control", placeholder: "Search by name"%>
+              <%= button_tag "Search", type: "submit", class: "btn btn-primary" %>
+              <% end %>
+          </li>
+          <li class="add-students-button">
+            <%= link_to new_student_path do %>
+              <%= image_tag "add_students", class: "add-students" %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+
+
+
+
+      <div class="listed-students">
+        <% @students.each do |student| %>
+        <ul>
+          <li><%= link_to student.name, student_path(student) %></li>
+        </ul>
+
         <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12, col-sm-6">
-      <% @students.each do |student| %>
-      <ul>
-        <li><%= link_to student.name, student_path(student) %></li>
-      </ul>
-      <% end %>
-    </div>
-  </div>
-</div>
 
 
