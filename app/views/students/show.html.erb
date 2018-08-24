@@ -7,3 +7,8 @@
 <li><%= @student.birth_date %></li>
 <li><%= @student.description %></li>
 </ul>
+
+<%= link_to "Edit", edit_student_path(@student)  %>
+<%= link_to student_path(@student), method: :delete, data: { confirm: "Are you sure?" } do %>
+  <i class="fa fa-trash fa-lg" style="padding: 10px;"></i>
+  <% end %>

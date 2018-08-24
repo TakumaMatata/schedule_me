@@ -1,16 +1,17 @@
 <div class="profile">
   <div class="col-xs-12 col-sm-4 col-sm-offset-4">
     <div class="user-imformation text-center">
-      <div class="profile_photo">
+      <div class="profile-photo-flame">
         <% if @user.photo.blank?%>
-          <%= image_tag "default_icon.png" %>
+          <%= image_tag "default_icon.png", class: "profile-photo"%>
         <% else %>
-          <%= cl_image_tag @user.photo, crop: :fill %>
+          <%= cl_image_tag @user.photo, crop: :fill, class: "profile-photo"%>
         <% end %>
       </div>
     <h3><%= @user.first_name %>  <%= @user.last_name %></h3>
     <h4><%= @user.email %></h4>
     <%= link_to "Edit profile",  edit_user_path, class: "btn btn-warning" %>
+    <p><%= link_to "delete my account", cancel_user_registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %></p>
     </div>
   </div>
 </div>

@@ -20,10 +20,15 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <div class="body-wrapper">
+
+    <% if action_name == "home" %>
+      <div class="body-wrapper">
+        <%= yield %>
+      </div>
+      <%= render 'shared/footer' %>
+    <% else %>
       <%= yield %>
-    </div>
-    <%= render 'shared/footer' %>
+    <% end %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
