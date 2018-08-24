@@ -11,7 +11,7 @@ These are the lessons you teach.
 <span class="date-str"><%= date %></span>
 <div class = "room">
 <table>
-  <tr><th>h</th></tr>
+  <tr><th>&nbsp;</th></tr>
     <% (7..20).each do |h|%>
     <tr><td>
     <div class = "lesson-hour">
@@ -41,7 +41,9 @@ These are the lessons you teach.
       <% end %>
   <% if vacant_cell %>
     <tr><td>
+    <%= link_to new_lesson_path do %>
     <div class = "lesson-card-vacant">XXXXXXXXXXXXXXXX</div>
+    <% end %>
     </td></tr>
   <% end %>
   <% vacant_cell = true %>
