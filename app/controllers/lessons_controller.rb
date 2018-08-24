@@ -20,6 +20,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new(lesson_params)
     authorize @lesson
     if @lesson.save
+      @lesson.add_students(params[:students]) if params[:students]
       redirect_to lessons_path
     else
       render :new
