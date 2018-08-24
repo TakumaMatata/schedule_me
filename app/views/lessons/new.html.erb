@@ -1,23 +1,22 @@
-<h1>Lessons#new</h1>
-<p>Find me in app/views/lessons/new.html.erb</p>
 
 <div class="container">
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
+<h1>Create a lesson</h1>
       <%= simple_form_for(@lesson) do |form| %>
-
-      <%= simple_form_for :lesson, method: "get" do |f| %>
-            <%= f.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
-
-        <%= form.association :course, collection: Course.order('level'), label_method: :course_name,  prompt: "Choose a course"
- %>
-        <%= form.association :room, collection: Room.order('name'), label_method: :name,  prompt: "Choose a room"
- %>
-        <%= form.association :user, collection: User.order('first_name'), label_method: :first_name,  prompt: "Choose a Teacher"
- %>
+        <%= form.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%= form.association :course, collection: Course.order('level'), label_method: :course_name,  prompt: "Choose a course" %>
+        <%= form.association :room, collection: Room.order('name'), label_method: :name,  prompt: "Choose a room" %>
+        <%= form.association :user, collection: User.order('first_name'), label_method: :first_name,  prompt: "Choose a Teacher" %>
+        <label for="id_label_multiple">
+          Students <br>
+          <%= select_tag "students", options_from_collection_for_select(
+                Student.all, :id, :name),
+                class: 'select2 js-example-basic-multiple js-states form-control', id: "id_label_multiple", name: "students[]", multiple: "multiple" %>
+        </label>
         <%= form.button :submit %>
-          <% end %>
       <% end %>
     </div>
   </div>
 </div>
+

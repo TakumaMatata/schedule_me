@@ -20,6 +20,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new(lesson_params)
     authorize @lesson
     if @lesson.save
+      @lesson.add_students(params[:students]) if params[:students]
       redirect_to lessons_path
     else
       render :new
@@ -34,6 +35,7 @@ class LessonsController < ApplicationController
     @lesson.update(lesson_params)
     authorize @lesson
     if @lesson.save
+      @lesson.add_students(params[:students]) if params[:students]
       redirect_to lesson_path(@lesson)
     else
       render :new
@@ -53,6 +55,6 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:start_time, :user_id, :course_id, :room_id)
+    params.require(:lesson).permit(:start_time, :user_id, :course_id, :room_id, :students)
   end
 end

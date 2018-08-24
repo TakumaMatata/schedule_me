@@ -1,19 +1,34 @@
-<h1>Lessons#show</h1>
-<p>Find me in app/views/lessons/show.html.erb</p>
-<ul>
-  <li>Teacher: <%= @lesson.user.first_name %> <%= @lesson.user.last_name %> <%= link_to "teacher profile", user_path(@lesson.user) %></li>
-  <li>Time: <%= @lesson.start_time %></li>
-  <li>Language: <%= @lesson.course.language %></li>
-  <li>Level: <%= @lesson.course.level %></li>
-  <li>Duration: <%= @lesson.course.duration %></li>
-  <br>
-  <p>Students</p>
-  <% @lesson.enrollments.each do |enrollment| %>
-    <li><%= enrollment.student.name %> <%= link_to "student profile", student_path(enrollment.student) %></li>
-  <% end %>
-  <%= link_to "edit", edit_lesson_path(@lesson) %>
-  <%= link_to "schedule", lessons_path %>
-  <%= link_to lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure?" } do %>
-  <i class="fa fa-trash fa-lg" style="padding: 10px;"></i>
-  <% end %>
-</ul>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-xs-offset-4">
+       <h1>Lesson details</h1>
+       <ul>
+         <li>Teacher: <%= @lesson.user.first_name %> <%= @lesson.user.last_name %> </li>
+         <li><%= link_to "Teacher profile", user_path(@lesson.user) %></li>
+         <li>Time: <%= @lesson.start_time %></li>
+         <li>Language: <%= @lesson.course.language %></li>
+         <li>Level: <%= @lesson.course.level %></li>
+         <li>Duration: <%= @lesson.course.duration %></li>
+         <br>
+
+         <% @lesson.enrollments.each do |enrollment| %>
+           <li><%= enrollment.student.name %> <%= link_to "student profile", student_path(enrollment.student) %></li>
+         <% end %>
+         <%= console %>
+         <%= link_to lessons_path do %>
+         <i class="fas fa-calendar-alt fa-lg" style="padding: 10px;"></i>
+         <% end %>
+
+         <%= link_to edit_lesson_path(@lesson) do %>
+         <i class="fas fa-edit fa-lg" style="padding: 10px;"></i>
+         <% end %>
+
+         <%= link_to lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure you want to DELETE the lesson?" } do %>
+         <i class="fa fa-trash fa-lg" style="padding: 10px;"></i>
+         <% end %>
+       </ul>
+     </div>
+  </div>
