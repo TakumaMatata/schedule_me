@@ -1,15 +1,22 @@
-<h1>Edit student information</h1>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-4 col-xs-offset-4">
-      <%= simple_form_for(@student) do |form| %>
-        <%= form.input :name %>
-        <%= form.input :birth_date %>
-        <%= form.input :category %>
-        <%= form.input :description%>
-        <%= form.button :submit %>
-      <% end %>
+<div class="student-new">
+  <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+    <div class="new-student-form">
+      <div class="student-new-title text-center">
+        <h2>Edit student</h2>
+        <%= image_tag "student-hat", class: "add-students" %>
+      </div>
+
+
+      <div class="new-student-form-imput text-center">
+        <%= simple_form_for @student do |form| %>
+          <%= form.input :name %>
+          <%= form.input :birth_date, as: :string, required: false, input_html: {class: "datepicker"}%>
+          <%= form.input :category %>
+          <%= form.input :description%>
+          <%= form.button :submit, class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
