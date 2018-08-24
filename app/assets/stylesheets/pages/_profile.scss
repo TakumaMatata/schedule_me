@@ -3,3 +3,21 @@
   width: 150px;
   border-radius: 50%;
 }
+
+.profile{
+  margin-top: 150px;
+}
+.user-imformation {
+  display: flex;
+  justify-content: space-around;
+}
+.user-dials {
+  margin-top: 70px;
+}
+.user-name {
+  font-family: $headers-font;
+}
+
+.user-details {
+  padding-top: 25px;
+}
