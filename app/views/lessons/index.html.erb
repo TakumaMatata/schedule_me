@@ -1,39 +1,57 @@
 <div class = "container">
-<h3>Lessons</h3>
-
 <p>
-  Welcome, <%=@user.first_name%>!
+Welcome, <%=@user.first_name%>!
 <% if @user.role == "manager"%>
-These are the lessons you manage.
+These are the lessons you manage. <%= link_to "Create New Lesson", new_lesson_path %>
 <% else %>
 These are the lessons you teach.
 <% end %>
 </p>
-
-
-<%= calendar number_of_days: 1, events: @lessons do |date, lessons| %>
-  <span class="date-str"><%= date %></span>
-
+<%= week_calendar events: @lessons do |date, lessons| %>
+<span class="date-str"><%= date %></span>
 <div class = "room">
-<% @rooms.each do |room| %>
 <table>
-  <tr><th>room <%= room.name %></th></tr>
+  <tr><th>&nbsp;</th></tr>
+    <% (7..20).each do |h|%>
+    <tr><td>
+    <div class = "lesson-hour">
+      <%= h %>
+    </div>
+   </tr></td>
+<% end %>
+</table>
+<% @rooms.each do |room| %>
+<% vacant_cell = true %>
+<table>
+  <tr><th>Room <%= room.name %></th></tr>
+    <% (7..20).each do |h|%>
     <% lessons.each do |lesson| %>
-      <% if room.id == lesson.room.id %>
-  <tr><td>
-      <div class = "lesson-card">
-        <%= lesson.start_time.strftime('%H') %> <%= lesson.start_time.strftime('%M') %>
-        <%= lesson.course.language %>
-        <%= lesson.course.level %>
-        <%= link_to "details", lesson_path(lesson) %>
-      </div>
-  </td></tr>
+      <% if room.id == lesson.room.id && h==lesson.start_time.strftime('%H').to_i %>
+        <% vacant_cell = false %>
+        <tr><td>
+          <%= link_to lesson_path(lesson) do %>
+          <div class = "lesson-card level-<%= lesson.course.level.downcase %>">
+            <%= lesson.start_time.strftime('%H') %> <%= lesson.start_time.strftime('%M') %>
+<!--             <%= lesson.course.language %> -->
+            <%= lesson.course.level %>
+          </div>
+          <% end %>
+        </td></tr>
+      <% end %>
+      <% end %>
+  <% if vacant_cell %>
+    <tr><td>
+    <%= link_to new_lesson_path do %>
+    <div class = "lesson-card-vacant">XXXXXXXXXXXXXXXX</div>
+    <% end %>
+    </td></tr>
   <% end %>
+  <% vacant_cell = true %>
   <% end %>
 </table>
 <% end %>
-</div>
 <% end %>
-
-<%= link_to "Create New Lesson", new_lesson_path %>
 </div>
+</div>
+
+

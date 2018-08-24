@@ -1,19 +1,3 @@
-<div class = "room">
-<% @rooms.each do |room| %>
-<table>
-  <tr><th>rm <%= room.name %></th></tr>
-    <% lessons.each do |lesson| %>
-      <% if room.id == lesson.room.id %>
-  <tr><td>
-      <div class = "lesson-card">
-        <%= lesson.start_time.strftime('%H') %> <%= lesson.start_time.strftime('%M') %>
-        <%= lesson.course.language %>
-        <%= lesson.course.level %>
-        <%= link_to "details", lesson_path(lesson) %>
-      </div>
-  </td></tr>
-  <% end %>
-  <% end %>
-</table>
-<% end %>
-</div>
+
+
+
