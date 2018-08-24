@@ -7,7 +7,7 @@
         <% else %>
           <%= cl_image_tag @user.photo, crop: :fill, class: "profile-photo"%>
         <% end %>
-        <%= simple_form_for @user, remote: true do |f| %>
+        <%= simple_form_for @user do |f| %>
           <%= f.error_notification %>
           <%= f.input :photo%>
           <%= f.input :photo_cache, as: :hidden %>
