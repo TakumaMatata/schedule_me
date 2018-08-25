@@ -17,13 +17,32 @@ class LessonsController < ApplicationController
   end
 
   def create
-    @lesson = Lesson.new(lesson_params)
-    authorize @lesson
-    if @lesson.save
-      @lesson.add_students(params[:students]) if params[:students]
-      redirect_to lessons_path
+    if params[:recurring_check][:recurring]
+      @lesson = Lesson.new(lesson_params)
+      authorize @lesson
+      if @lesson.save
+        @lesson.add_students(params[:students]) if params[:students]
+        start_time = @lesson.start_time
+        (params[:recurring_check][:weeks].to_i-1).times do
+          start_time = start_time + 7.days
+          new_lesson = Lesson.new(lesson_params)
+          new_lesson.start_time = start_time
+          authorize new_lesson
+          new_lesson.save
+        end
+        redirect_to lessons_path
+      else
+        render :new
+      end
     else
-      render :new
+      @lesson = Lesson.new(lesson_params)
+      authorize @lesson
+      if @lesson.save
+        @lesson.add_students(params[:students]) if params[:students]
+        redirect_to lessons_path
+      else
+        render :new
+      end
     end
   end
 

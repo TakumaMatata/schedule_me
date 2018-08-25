@@ -14,6 +14,10 @@
                 Student.all, :id, :name),
                 class: 'select2 js-example-basic-multiple js-states form-control', id: "id_label_multiple", name: "students[]", multiple: "multiple" %>
         </label>
+        <%= simple_fields_for :recurring_check do |n| %>
+            <p><%= n.input :recurring, as: :boolean, checked_value: true, unchecked_value: false %>for
+              <%= n.select :weeks, (2..52) %>weeks</p>
+        <% end %>
         <%= form.button :submit %>
       <% end %>
     </div>
