@@ -83,6 +83,11 @@
             <% end %>
           </li>
           <li>
+            <%= link_to users_path do %>
+              <i class="fas fa-id-card-alt"></i> <%= t(".teachers", default: "Teachers") %>
+            <% end %>
+          </li>
+          <li>
             <%= link_to students_path do%>
               <i class="fas fa-graduation-cap"></i>  <%= t(".students", default: "Students") %>
             <% end %>
