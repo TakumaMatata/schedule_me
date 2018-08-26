@@ -19,6 +19,9 @@
 
     <% if user_signed_in? %>
       <!-- Links when logged in -->
+      <%= link_to users_path do %>
+        <%= image_tag "student_hat.svg", class: " avatar" %>
+      <% end %>
       <%= link_to students_path do %>
         <%= image_tag "student_hat.svg", class: " avatar" %>
       <% end %>
