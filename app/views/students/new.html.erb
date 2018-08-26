@@ -1,13 +1,13 @@
 <div class="student-new">
-  <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-    <div class="new-student-form">
-      <div class="student-new-title text-center">
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+    <div class="form">
+      <div class="form-title text-center">
         <h2>New student</h2>
-        <%= image_tag "student-hat.svg", class: "add-students" %>
+        <%= image_tag "student-hat.svg", class: "form-icon" %>
       </div>
 
 
-      <div class="new-student-form-imput text-center">
+      <div class="form-imput text-center">
         <%= simple_form_for @student do |form| %>
           <%= form.input :name %>
           <%= form.input :birth_date, as: :string, required: false, input_html: {class: "datepicker"}%>
