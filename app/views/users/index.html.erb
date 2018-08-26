@@ -15,23 +15,25 @@
           </li>
         </ul>
       </div>
-      <div class="listed-students">
-        <% @users.each do |user| %>
-          <ul class = "list-inline">
-            <li>
-              <% if user.photo.blank?%>
-                <%= image_tag "user.svg", class: "teachers-photos" %>
-              <% else %>
-                <%= cl_image_tag user.photo, crop: :fill, class: "teachers-photos"%>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to user_path(user) do %>
-                <%= user.first_name %> <%= user.last_name %>
-              <% end %>
-            </li>
-          </ul>
-        <% end %>
+      <div class="display-list">
+        <div class="listed-students">
+          <% @users.each do |user| %>
+            <ul class = "list-inline">
+              <li>
+                <% if user.photo.blank?%>
+                  <%= image_tag "user.svg", class: "teachers-photos" %>
+                <% else %>
+                  <%= cl_image_tag user.photo, crop: :fill, class: "teachers-photos"%>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to user_path(user) do %>
+                  <%= user.first_name %> <%= user.last_name %>
+                <% end %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

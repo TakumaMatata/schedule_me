@@ -19,12 +19,14 @@
           </li>
         </ul>
       </div>
-      <div class="listed-students">
-        <% @students.each do |student| %>
-          <ul>
-            <li><%= link_to student.name, student_path(student) %></li>
-          </ul>
-        <% end %>
+      <div class="display-list">
+        <div class="listed-students">
+          <% @students.each do |student| %>
+            <ul>
+              <li><%= link_to student.name, student_path(student) %></li>
+            </ul>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
