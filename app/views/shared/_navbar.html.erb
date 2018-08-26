@@ -19,48 +19,55 @@
 
     <% if user_signed_in? %>
       <!-- Links when logged in -->
-      <%= link_to users_path do %>
-        <%= image_tag "student_hat.svg", class: " avatar" %>
-      <% end %>
-      <%= link_to students_path do %>
-        <%= image_tag "student_hat.svg", class: " avatar" %>
-      <% end %>
+      <div class="navbar-bottons navbar-wagon-item">
+        <ul class="list-inline">
+          <li>
+            <%= link_to users_path do %>
+              <%= image_tag "id_card.svg", class: " avatar" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to students_path do %>
+              <%= image_tag "student_hat.svg", class: " avatar" %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
       <!-- Avatar with dropdown menu -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <% if current_user.photo.blank? %>
-            <%= image_tag "user.svg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <% else %>
-            <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <% end %>
+      <div class="dropdown">
 
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to user_path(current_user) do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
+        <% if current_user.photo.blank? %>
+          <%= image_tag "user.svg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% else %>
+          <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% end %>
+
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to user_path(current_user) do %>
+              <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
+        </ul>
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-    <div class="form-inputs form-signin navbar-form">
-      <%= form_for(:user, :url => session_path(:user)) do |f| %>
-        <%= f.text_field :email,
-          class: "form-control",
-          placeholder: "email"%>
-        <%= f.password_field :password,
-          class: "form-control",
-          placeholder: "password"%>
-       <span><%= f.submit 'Login', class: 'btn btn-primary'%></span>
-      <% end %>
-    </div>
+      <div class="form-inputs form-signin navbar-form">
+        <%= form_for(:user, :url => session_path(:user)) do |f| %>
+          <%= f.text_field :email,
+            class: "form-control",
+            placeholder: "email"%>
+          <%= f.password_field :password,
+            class: "form-control",
+            placeholder: "password"%>
+          <span><%= f.submit 'Login', class: 'btn btn-primary'%></span>
+        <% end %>
+      </div>
     <% end %>
   </div>
 
