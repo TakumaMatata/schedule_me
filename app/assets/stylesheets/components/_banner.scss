@@ -1,5 +1,14 @@
+#navber {
+  position: relative;
+}
+#fixed-bar {
+  position: absolute;
+  top: 60px;
+  width: 100vw;
+}
 .banner {
   height: calc(100vh - 60px);
+  margin-top: 0px !important;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -22,4 +31,9 @@
     padding: 15px 50px;
   }
 }
-body { padding-top: 70px; }
+
+.main-pages {
+  margin-top: 120px;
+}
+
+

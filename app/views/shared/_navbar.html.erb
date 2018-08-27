@@ -1,4 +1,4 @@
-<div class="navbar-wagon <%= yield(:navbar_class) %> navbar-fixed-top">
+<div class="navbar-wagon <%= yield(:navbar_class) %> navbar-fixed-top" id="navbar">
   <!-- Logo -->
   <% if user_signed_in? %>
     <%= link_to lessons_path, class: "navbar-wagon-brand" do %>
