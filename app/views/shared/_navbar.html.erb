@@ -21,6 +21,13 @@
       <!-- Links when logged in -->
       <div class="navbar-bottons navbar-wagon-item">
         <ul class="list-inline">
+          <% if @user.role == "manager"%>
+            <li>
+              <%= link_to new_lesson_path do %>
+                <%= image_tag "teaching.svg", class: " avatar" %>
+              <% end %>
+            </li>
+          <% end %>
           <li>
             <%= link_to users_path do %>
               <%= image_tag "id_card.svg", class: " avatar" %>

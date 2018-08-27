@@ -1,15 +1,5 @@
 <div class = "container">
 <h1>Welcome, <%=@user.first_name%>!</h1>
-<p>
-<% if @user.role == "manager"%>
-These are the lessons you manage.
-  <%= link_to new_lesson_path do %>
-  <button type="button" class="btn btn-primary">Create a lesson</button>
-  <% end %>
-<% else %>
-These are the lessons you teach.
-<% end %>
-</p>
 
 <ul class="nav nav-tabs">
   <li class="active"><a href="#weekly_view" data-toggle="tab">Weekly View</a></li>
