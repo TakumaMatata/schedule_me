@@ -51,8 +51,12 @@ category = "student"
 description = "some description"
 
 50.times do
-  Student.create(name: Faker::HarryPotter.character, birth_date: Faker::Time.between(50.years.ago, 6.years.ago, period = :all), category: category, description: description)
+  url = "https://kitt.lewagon.com/placeholder/users/random"
+  student_new = Student.new(name: Faker::HarryPotter.character, birth_date: Faker::Time.between(50.years.ago, 6.years.ago, period = :all), category: category, description: description)
+  student_new.remote_photo_url = url
+  student_new.save
 end
+puts "Created #{Student.count} lessons."
 
 user_id = User.first.id + 1
 course_id = Course.first.id

@@ -5,7 +5,7 @@ class Student < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-
+  mount_uploader :photo, PhotoUploader
   has_many :lessons, through: :enrollments
   has_many :enrollments
   validates :name, presence: true

@@ -36,7 +36,9 @@
             <% @lesson.enrollments.each do |enrollment| %>
                <li>
                  <h4>
-                   <%= link_to enrollment.student.name, student_path(enrollment.student) %>
+                   <%= link_to student_path(enrollment.student) do %>
+                    <%= cl_image_tag enrollment.student.photo %>
+                   <% end %>
                  </h4>
                  <p>
                    <% enrollment.memos.each do |memo| %>

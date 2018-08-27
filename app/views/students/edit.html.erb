@@ -14,6 +14,8 @@
           <%= form.input :birth_date, as: :string, required: false, input_html: {class: "datepicker"}%>
           <%= form.input :category %>
           <%= form.input :description%>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
           <%= form.button :submit, class: "btn btn-primary" %>
         <% end %>
       </div>
