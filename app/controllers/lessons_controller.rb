@@ -9,6 +9,7 @@ class LessonsController < ApplicationController
 
   def show
     authorize @lesson
+    # Passing the instance variable of the enrollment and new memo
   end
 
   def new
@@ -74,6 +75,6 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:start_time, :user_id, :course_id, :room_id, :students)
+    params.require(:lesson).permit(:start_time, :user_id, :course_id, :room_id, :students, :comment)
   end
 end

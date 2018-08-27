@@ -13,10 +13,18 @@
          <li>Level: <%= @lesson.course.level %></li>
          <li>Duration: <%= @lesson.course.duration %></li>
          <br>
-
          <% @lesson.enrollments.each do |enrollment| %>
-           <li><%= enrollment.student.name %> <%= link_to "student profile", student_path(enrollment.student) %></li>
+           <li><%= enrollment.student.name %> <%= link_to "student profile", student_path(enrollment.student) %>
+              <%# @lesson.enrollments.each do |enrollment| %>
+                <!-- <li><%#= enrollment.memo.comment %></li> -->
+              <%# end %>
+            </li>
          <% end %>
+
+
+
+
+
          <%= link_to lessons_path do %>
          <i class="fas fa-calendar-alt fa-lg" style="padding: 10px;"></i>
          <% end %>
