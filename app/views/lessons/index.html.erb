@@ -1,87 +1,39 @@
 <div class = "container">
-<h1>Welcome, <%=@user.first_name%>!</h1>
-<p>
-<% if @user.role == "manager"%>
-These are the lessons you manage.
-  <%= link_to new_lesson_path do %>
-  <button type="button" class="btn btn-primary">Create a lesson</button>
-  <% end %>
-<% else %>
-These are the lessons you teach.
-<% end %>
-</p>
+  <h1>Welcome, <%=@user.first_name%>!</h1>
+  <p>
+    <% if @user.role == "manager"%>
+    These are the lessons you manage.
+      <%= link_to new_lesson_path do %>
+        <button type="button" class="btn btn-primary">Create a lesson</button>
+      <% end %>
+    <% else %>
+      These are the lessons you teach.
+    <% end %>
+  </p>
 
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#weekly_view" data-toggle="tab">Weekly View</a></li>
-  <li><a href="#daily_view" data-toggle="tab">Daily View</a></li>
+  <li class="active"><%= link_to "weekly View", "#weekly_view", data: {toggle: "tab"} %></li>
+  <li><%= link_to "Daily View", "#daily_view", data: {toggle: "tab"} %></li>
 </ul>
 
 <div class="tab-content">
-<div class="tab-pane active" id="weekly_view">
-<%= week_calendar events: @lessons do |date, lessons| %>
-<span class="date-str"><%= date %></span>
-<div class = "room">
-<table>
-  <tr><th>&nbsp;</th></tr>
-    <% (10..20).each do |h|%>
-    <tr><td>
-    <div class = "lesson-hour">
-      <%= h %>
-    </div>
-   </tr></td>
-<% end %>
-</table>
-<% @rooms.each do |room| %>
-<% vacant_cell = true %>
-<table>
-  <tr><th>Room <%= room.name %></th></tr>
-    <% (10..20).each do |h|%>
-    <% lessons.each do |lesson| %>
-      <% if room.id == lesson.room.id && h==lesson.start_time.strftime('%H').to_i %>
-        <% vacant_cell = false %>
-        <tr><td>
-          <%= link_to lesson_path(lesson) do %>
-          <div class = "lesson-card level-<%= lesson.course.level.downcase %>">
-            <%= lesson.start_time.strftime('%H') %> <%= lesson.start_time.strftime('%M') %>
-<!--             <%= lesson.course.language %> -->
-            <%= lesson.course.level %>
-          </div>
-          <% end %>
-        </td></tr>
+  <div class="tab-pane active" id="weekly_view">
+    <%= week_calendar events: @lessons do |date, lessons| %>
+    <span class="date-str"><%= date %></span>
+  <div class = "room">
+  <table>
+    <tr>
+      <th>&nbsp;</th>
+    </tr>
+      <% (10..20).each do |h|%>
+    <tr>
+      <td><div class = "lesson-hour"><%= h %></div></td>
+    </th>
       <% end %>
-      <% end %>
-  <% if vacant_cell %>
-    <tr><td>
-    <%= link_to new_lesson_path(room_id: room.id, start_time: DateTime.new(date.year, date.month, date.day, h)) do %>
-    <div class = "lesson-card-vacant">XXXXXXXXXXXXXXXX</div>
-    <% end %>
-    </td></tr>
-  <% end %>
-  <% vacant_cell = true %>
-  <% end %>
-</table>
-<% end %>
-<% end %>
-</div>
-
-<div class="tab-pane" id="daily_view">
-<%= calendar number_of_days:1, events: @lessons do |date, lessons| %>
-<span class="date-str"><%= date %></span>
-<div class = "room">
-<table>
-  <tr><th>&nbsp;</th></tr>
-    <% (10..20).each do |h|%>
-    <tr><td>
-    <div class = "lesson-hour">
-      <%= h %>
-    </div>
-   </tr></td>
-<% end %>
-</table>
-
-<table>
+  </table>
   <% @rooms.each do |room| %>
-    <% vacant_cell = true %>
+  <% vacant_cell = true %>
+  <table>
     <tr>
       <th>Room <%= room.name %></th>
     </tr>
@@ -89,38 +41,87 @@ These are the lessons you teach.
       <% lessons.each do |lesson| %>
         <% if room.id == lesson.room.id && h==lesson.start_time.strftime('%H').to_i %>
           <% vacant_cell = false %>
-          <tr>
-            <td>
-              <%= link_to lesson_path(lesson) do %>
-                <div class = "lesson-card level-<%= lesson.course.level.downcase %>">
-                  <%= lesson.start_time.strftime('%H') %> <%= lesson.start_time.strftime('%M') %>
-      <!--             <%= lesson.course.language %> -->
-                  <%= lesson.course.level %>
-                </div>
-              <% end %>
-            </td>
-          </tr>
+          <tr><td>
+            <%= link_to lesson_path(lesson) do %>
+            <div class = "lesson-card level-<%= lesson.course.level.downcase %>">
+              <%= lesson.start_time.strftime('%H') %> <%= lesson.start_time.strftime('%M') %>
+  <!--             <%= lesson.course.language %> -->
+              <%= lesson.course.level %>
+            </div>
+            <% end %>
+          </td></tr>
         <% end %>
       <% end %>
     <% if vacant_cell %>
       <tr>
         <td>
-          <%= link_to new_lesson_path(room_id: room.id) do %>
-            <div class = "lesson-card-vacant"><%= room.name %></div>
+          <%= link_to new_lesson_path(room_id: room.id, start_time: DateTime.new(date.year, date.month, date.day, h)) do %>
+            <div class = "lesson-card-vacant">XXXXXXXXXXXXXXXX</div>
           <% end %>
         </td>
       </tr>
     <% end %>
     <% vacant_cell = true %>
-  <% end %>
-</table>
-
+    <% end %>
+  </table>
 <% end %>
 <% end %>
 </div>
 
+<div class="tab-pane" id="daily_view">
+    <%= calendar number_of_days:1, events: @lessons do |date, lessons| %>
+    <span class="date-str"><%= date %></span>
+  <div class = "room">
+  <table>
+    <tr>
+      <th>&nbsp;</th>
+    </tr>
+      <% (10..20).each do |h|%>
+    <tr>
+      <td><div class = "lesson-hour"><%= h %></div></td>
+    </th>
+      <% end %>
+  </table>
+  <% @rooms.each do |room| %>
+  <% vacant_cell = true %>
+  <table>
+    <tr>
+      <th>Room <%= room.name %></th>
+    </tr>
+    <% (10..20).each do |h|%>
+      <% lessons.each do |lesson| %>
+        <% if room.id == lesson.room.id && h==lesson.start_time.strftime('%H').to_i %>
+          <% vacant_cell = false %>
+          <tr><td>
+            <%= link_to lesson_path(lesson) do %>
+            <div class = "lesson-card level-<%= lesson.course.level.downcase %>">
+              <%= lesson.start_time.strftime('%H') %> <%= lesson.start_time.strftime('%M') %>
+  <!--             <%= lesson.course.language %> -->
+              <%= lesson.course.level %>
+            </div>
+            <% end %>
+          </td></tr>
+        <% end %>
+      <% end %>
+    <% if vacant_cell %>
+      <tr>
+        <td>
+          <%= link_to new_lesson_path(room_id: room.id, start_time: DateTime.new(date.year, date.month, date.day, h)) do %>
+            <div class = "lesson-card-vacant">XXXXXXXXXXXXXXXX</div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    <% vacant_cell = true %>
+    <% end %>
+  </table>
+<% end %>
+<% end %>
 </div>
 
+
+
+</div>
 </div>
 
 
