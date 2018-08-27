@@ -1,54 +1,54 @@
-<div class="lesson-show">
-  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
-    <div class="information-box">
-      <div class="show-title text-center">
-        <h3>
-          <%= @lesson.start_time.strftime("%l:%M %p") %>
-          <%= @lesson.start_time.strftime("%A %B %e %Y ") %>
-        </h3>
-        <p>
-          <%= image_tag "time.svg", class: "small-icon" %><%= @lesson.course.duration %>mins
-        </p>
-        <h5>
-          <%= @lesson.course.level %> - <%= @lesson.course.language %>
-        </h5>
-      </div>
-      <div class="show-information">
-        <div class="teacher-information text-center">
-          <div class="user-photo">
-            <%= link_to user_path(@lesson.user) do%>
-              <% if @lesson.user.photo.blank?%>
-                <%= image_tag "user.svg", class: "user-photo-information" %>
-              <% else %>
-                <%= cl_image_tag @lesson.user.photo, crop: :fill, class: "user-photo-information"%>
-              <% end %>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-xs-offset-4">
+       <h1>Lesson details</h1>
+       <ul>
+         <li>Teacher: <%= @lesson.user.first_name %> <%= @lesson.user.last_name %> </li>
+         <li><%= link_to "Teacher profile", user_path(@lesson.user) %></li>
+         <li>Time: <%= @lesson.start_time %></li>
+         <li>Language: <%= @lesson.course.language %></li>
+         <li>Level: <%= @lesson.course.level %></li>
+         <li>Duration: <%= @lesson.course.duration %></li>
+         <br>
+
+         <h3>Students:</h3>
+
+         <div class="student">
+            <% @lesson.enrollments.each do |enrollment| %>
+               <li>
+                 <h4>
+                   <%= link_to enrollment.student.name, student_path(enrollment.student) %>
+                 </h4>
+                 <p>
+                   <% enrollment.memos.each do |memo| %>
+                     <%= memo.comment %>
+                   <% end %>
+                 </p>
+                 <%= simple_form_for [enrollment, @memo] do |f| %>
+                   <%= f.input :comment %>
+                   <%= f.submit "add a review", class: "btn btn-primary" %>
+                 <% end %>
+               </li>
             <% end %>
-            <h3>
-              <%= @lesson.user.first_name %>  <%= @lesson.user.last_name %>
-            </h3>
-          </div>
-        </div>
-        <ul class="student-information">
-         <% @lesson.enrollments.each do |enrollment| %>
-          <li>
-            <%= link_to student_path(enrollment.student) do %>
-              <%= enrollment.student.name %>
-            <% end %>
-          </li>
+         </div>
+
+
+
+
+         <%= link_to lessons_path do %>
+         <i class="fas fa-calendar-alt fa-lg" style="padding: 10px;"></i>
          <% end %>
-        </ul>
-      </div>
-        <ul class="list-inline">
-          <li>
-            <%= link_to edit_lesson_path(@lesson) do %>
-              <%= image_tag "pen.svg", class: "small-icon" %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure you want to DELETE the lesson?" } do %>
-              <%= image_tag "trash.svg", class: "small-icon" %>
-            <% end %>
-          </li>
-        </ul>
+
+         <%= link_to edit_lesson_path(@lesson) do %>
+         <i class="fas fa-edit fa-lg" style="padding: 10px;"></i>
+         <% end %>
+
+         <%= link_to lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure you want to DELETE the lesson?" } do %>
+         <i class="fa fa-trash fa-lg" style="padding: 10px;"></i>
+         <% end %>
+       </ul>
      </div>
   </div>
