@@ -1,5 +1,11 @@
 class User < ApplicationRecord
   # mount_uploader :photo, PhotoUploader
+  include PgSearch
+  pg_search_scope :search_by_first_name_and_last_name,
+    against: [:first_name, :last_name],
+    using: {
+      tsearch: { prefix: true }
+    }
   has_many :courses
   has_many :lessons
   mount_uploader :photo, PhotoUploader
