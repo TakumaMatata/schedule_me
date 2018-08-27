@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_time_zone, if: :devise_controller?
+  # before_action :set_time_zone, if: :devise_controller?
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
@@ -17,9 +17,9 @@ class ApplicationController < ActionController::Base
   end
   private
 
-  def set_time_zone
-    Time.zone = current_user.time_zone
-  end
+  # def set_time_zone
+  #   Time.zone = current_user.time_zone
+  # end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
