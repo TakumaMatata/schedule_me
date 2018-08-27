@@ -13,14 +13,27 @@
          <li>Level: <%= @lesson.course.level %></li>
          <li>Duration: <%= @lesson.course.duration %></li>
          <br>
-         <% @lesson.enrollments.each do |enrollment| %>
-           <li><%= enrollment.student.name %> <%= link_to "student profile", student_path(enrollment.student) %>
-              <%# @lesson.enrollments.each do |enrollment| %>
-                <!-- <li><%#= enrollment.memo.comment %></li> -->
-              <%# end %>
-            </li>
-         <% end %>
 
+         <h3>Students:</h3>
+
+         <div class="student">
+            <% @lesson.enrollments.each do |enrollment| %>
+               <li>
+                 <h4>
+                   <%= link_to enrollment.student.name, student_path(enrollment.student) %>
+                 </h4>
+                 <p>
+                   <% enrollment.memos.each do |memo| %>
+                     <%= memo.comment %>
+                   <% end %>
+                 </p>
+                 <%= simple_form_for [enrollment, @memo] do |f| %>
+                   <%= f.input :comment %>
+                   <%= f.submit "add a review", class: "btn btn-primary" %>
+                 <% end %>
+               </li>
+            <% end %>
+         </div>
 
 
 
