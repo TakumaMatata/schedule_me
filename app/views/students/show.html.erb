@@ -1,14 +1,28 @@
-<h1><%= @student.name %>'s details</h1>
-<p>Find me in app/views/students/show.html.erb</p>
+<div class="student-show">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
+    <div class="information-box">
+      <div class="student-name text-center">
+        <h3><%= @student.name %></h3>
+      </div>
+      <div class="student-information text-center">
+        <ul>
+          <li><%= @student.name %></li>
+          <li><%= @student.category %></li>
+          <li><%= @student.birth_date %></li>
+          <li><%= @student.description %></li>
+        </ul>
+      </div>
+      <div class="edit-information text-center">
+        <%= link_to edit_student_path(@student) do%>
+          <%= image_tag "pen.svg", class: "link-icon" %>
+        <% end %>
+        <%= link_to student_path(@student), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <%= image_tag "trash.svg", class: "link-icon" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<ul>
-<li><%= @student.name %></li>
-<li><%= @student.category %></li>
-<li><%= @student.birth_date %></li>
-<li><%= @student.description %></li>
-</ul>
 
-<%= link_to "Edit", edit_student_path(@student)  %>
-<%= link_to student_path(@student), method: :delete, data: { confirm: "Are you sure?" } do %>
-  <i class="fa fa-trash fa-lg" style="padding: 10px;"></i>
-  <% end %>
+

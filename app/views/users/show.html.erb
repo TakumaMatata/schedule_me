@@ -1,32 +1,36 @@
 <div class="users-show">
-  <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4">
-    <div class="user-information">
-      <div class="user-photo">
-        <% if @user.photo.blank?%>
-          <%= image_tag "user.svg", class: "user-photo-information" %>
-        <% else %>
-          <%= cl_image_tag @user.photo, crop: :fill, class: "user-photo-information"%>
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
+    <div class="information-box">
+      <div class="information-box-content text-center">
+        <div class="user-information">
+          <div class="user-photo">
+            <% if @user.photo.blank?%>
+              <%= image_tag "user.svg", class: "user-photo-information" %>
+            <% else %>
+              <%= cl_image_tag @user.photo, crop: :fill, class: "user-photo-information"%>
+            <% end %>
+          </div>
+          <div class="user-information">
+            <h3><%= @user.first_name %>  <%= @user.last_name %></h3>
+            <p><%= @user.email %></p>
+          </div>
+        </div>
+        <% if current_user == @user %>
+          <div class="change-photo">
+            <%= simple_form_for @user do |f| %>
+              <%= f.error_notification %>
+              <%= f.input :photo%>
+              <%= f.input :photo_cache, as: :hidden %>
+              <%= f.button :submit, "save", class: 'btn btn-warning'  %>
+            <% end %>
+          </div>
         <% end %>
+        <div class="delete-botton">
+          <% if current_user == @user %>
+           <p><%= link_to "delete my account", cancel_user_registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %></p>
+          <% end %>
+        </div>
       </div>
-      <div class="user-information">
-        <h3><%= @user.first_name %>  <%= @user.last_name %></h3>
-        <p><%= @user.email %></p>
-      </div>
-    </div>
-    <div class="change-photo">
-      <% if current_user == @user %>
-        <%= simple_form_for @user do |f| %>
-          <%= f.error_notification %>
-          <%= f.input :photo%>
-          <%= f.input :photo_cache, as: :hidden %>
-          <%= f.button :submit, "save", class: 'btn btn-warning'  %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="delete-botton">
-      <% if current_user == @user %>
-       <p><%= link_to "delete my account", cancel_user_registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %></p>
-      <% end %>
     </div>
   </div>
 </div>
