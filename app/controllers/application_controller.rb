@@ -15,6 +15,20 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
+
+  # def I18n.t(code, options = {})
+  #   begin
+  #     message_code = code
+  #     normal_translated = super message_code, options
+  #     translated = eval("\"#{normal_translated}\"")
+  #     return translated
+  #   rescue SyntaxError => ex
+  #     return normal_translated
+  #   end.
+  # end
+  # nozomi added definition above to be able to use erb inside yml file
+
+
   private
 
   # def set_time_zone
