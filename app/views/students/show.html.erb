@@ -1,10 +1,10 @@
 <div class="student-show">
   <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
     <div class="information-box">
-      <div class="student-name text-center">
+      <div class="show-title text-center">
         <h3><%= @student.name %></h3>
       </div>
-      <div class="student-information text-center">
+      <div class="show-information text-center">
         <ul>
           <li><%= @student.name %></li>
           <li><%= @student.category %></li>
@@ -12,14 +12,18 @@
           <li><%= @student.description %></li>
         </ul>
       </div>
-      <div class="edit-information text-center">
-        <%= link_to edit_student_path(@student) do%>
-          <%= image_tag "pen.svg", class: "link-icon" %>
-        <% end %>
-        <%= link_to student_path(@student), method: :delete, data: { confirm: "Are you sure?" } do %>
-          <%= image_tag "trash.svg", class: "link-icon" %>
-        <% end %>
-      </div>
+      <ul class="edit-information">
+        <li>
+          <%= link_to edit_student_path(@student) do%>
+            <%= image_tag "pen.svg", class: "small-icon" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to student_path(@student), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <%= image_tag "trash.svg", class: "small-icon" %>
+          <% end %>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
