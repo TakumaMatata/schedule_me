@@ -17,3 +17,15 @@ ul {
   list-style: none;
 }
 
+.teachers-photos {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.display-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+// warning from nozomi, this scss file is mixing up student/index file and teachers index
