@@ -5,4 +5,3 @@ import "../plugins/flatpickr"
 import '../components/select2';
 
 loadDynamicBannerText();
-
