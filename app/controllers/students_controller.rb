@@ -9,7 +9,6 @@ class StudentsController < ApplicationController
     else
       @students = Student.all
     end
-
   end
 
   def show
