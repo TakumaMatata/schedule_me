@@ -12,8 +12,13 @@ class LessonsController < ApplicationController
   end
 
   def new
-    @lesson = Lesson.new
-    authorize @lesson
+    if params[:room_id]
+      @lesson = Lesson.new(room_id: params[:room_id], start_time: params[:start_time])
+      authorize @lesson
+    else
+      @lesson = Lesson.new
+      authorize @lesson
+    end
   end
 
   def create
