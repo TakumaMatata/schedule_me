@@ -9,6 +9,9 @@ class LessonsController < ApplicationController
 
   def show
     authorize @lesson
+    # @enrollments = @lesson.enrollments
+    @memo = Memo.new
+
     # Passing the instance variable of the enrollment and new memo
   end
 
