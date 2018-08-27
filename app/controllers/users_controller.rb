@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   def index
     @users = policy_scope(User)
-    @users = User.all
+    if params[:query].present?
+      @users = User.search_by_first_name_and_last_name(params[:query])
+    else
+      @users = User.all
+    end
   end
 
   def show

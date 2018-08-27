@@ -1,3 +1,3 @@
 class Memo < ApplicationRecord
-  belongs_to :enrollments
+  belongs_to :enrollment
 end
