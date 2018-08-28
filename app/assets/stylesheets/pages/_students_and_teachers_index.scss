@@ -21,9 +21,9 @@
   .list-count {
     float:left;
     text-align:center;
-    width:30%;
+    width:10%;
     padding:0.5em;
-    color:#ddd;
+    color:#a6a6a6;
   }
 
   li {
@@ -61,6 +61,7 @@
     margin:2em 0;
     padding:0;
     position:relative;
+    column-count: 3;
   }
 
   ul:before {
@@ -70,7 +71,7 @@
     font-size:3em;
     text-align:right;
     top:1.5em;
-    color:#ededed;
+    color:#a6a6a6;
     font-weight:bold;
     font-family: 'Maven Pro', sans-serif;
     transform:rotate(-90deg);
@@ -156,8 +157,8 @@
 
   .list-wrap {
     float:left;
-    width:40%;
-    margin:2em 30%;
+    width:75%;
+    margin:2em 20%;
     padding:2em 0;
   }
 
