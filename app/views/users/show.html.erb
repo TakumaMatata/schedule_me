@@ -1,30 +1,31 @@
 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
-<div class="container">
-    <div class="navigation" style="display: none;">
+<div class="information-box">
+<!--     <div class="navigation" style="display: none;">
         <ul class="nav">
             <li><a href="#">Add Friend</a></li>
             <li><a href="#">Follow</a></li>
             <li><a href="#">Message</a></li>
         </ul>
-    </div>
+    </div> -->
     <div class="cover">
-        <div class="head">
+ <!--        <div class="head">
 
             <div class="actions right">
                 <a class="btn success" href="#">Following</a>
             </div>
             <div class="clear"></div>
-        </div>
-        <div class="avatar">
+        </div> -->
+        <div class="show-information">
             <% if @user.photo.blank?%>
               <%= image_tag "user.svg"%>
             <% else %>
-              <%= cl_image_tag @user.photo, crop: :fill, class: "user-photo-infotmation" %>
+              <%= cl_image_tag @user.photo, crop: :fill, class: "user-photo-infotmation"%>
             <% end %>
         </div>
     </div>
 
     <div class="main">
+
       <h1><%= @user.first_name %>  <%= @user.last_name %></h1>
       <h6><%= @user.email %></h6>
         <ul>
