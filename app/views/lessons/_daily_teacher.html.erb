@@ -1,6 +1,5 @@
-
-<%= calendar number_of_days:3, events: @lessons do |date, lessons| %>
-
+<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
+<%= calendar number_of_days:1, events: @lessons do |date, lessons| %>
 <table>
 <span class="date-str"><%= date %></span>
   <% vacant_cell = true %>
@@ -32,3 +31,4 @@
   <% end %>
 </table>
 <% end %>
+</div>
