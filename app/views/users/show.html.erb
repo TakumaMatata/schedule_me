@@ -1,53 +1,42 @@
-<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
-<div class="information-box">
-<!--     <div class="navigation" style="display: none;">
-        <ul class="nav">
-            <li><a href="#">Add Friend</a></li>
-            <li><a href="#">Follow</a></li>
-            <li><a href="#">Message</a></li>
-        </ul>
-    </div> -->
-    <div class="cover">
- <!--        <div class="head">
+<div class="user-show">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
+    <div class="information-box">
 
-            <div class="actions right">
-                <a class="btn success" href="#">Following</a>
-            </div>
-            <div class="clear"></div>
-        </div> -->
-        <div class="show-information">
+      <div class="cover">
+        <div class="head">
+        </div>
+          <div class="show-information">
             <% if @user.photo.blank?%>
               <%= image_tag "user.svg"%>
             <% else %>
-              <%= cl_image_tag @user.photo, crop: :fill, class: "user-photo-infotmation"%>
+              <%= cl_image_tag @user.photo, crop: :fill, width: "120" %>
             <% end %>
-        </div>
+          </div>
+      </div>
+      <div class="main">
+        <h1><%= @user.first_name %>  <%= @user.last_name %></h1>
+        <h6><%= @user.email %></h6>
+          <ul class= "text-center">
+          <% if current_user == @user %>
+            <li class="change-photo">
+              <%= simple_form_for @user do |f| %>
+                <%= f.error_notification %>
+                <%= f.input :photo, label: false%>
+                <%= f.input :photo_cache, as: :hidden, style: "form-center" %>
+                <%= f.button :submit, "save", class: 'btn btn-warning'  %>
+              <% end %>
+            </li>
+            <li class="delete-botton">
+              <% if current_user == @user %>
+               <p><%= link_to "delete my account", cancel_user_registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %></p>
+              <% end %>
+            </li>
+          <% end %>
+          </ul>
+      </div>
+      <div class="social">
     </div>
-
-    <div class="main">
-
-      <h1><%= @user.first_name %>  <%= @user.last_name %></h1>
-      <h6><%= @user.email %></h6>
-        <ul>
-        <% if current_user == @user %>
-          <li class="change-photo">
-            <%= simple_form_for @user do |f| %>
-              <%= f.error_notification %>
-              <%= f.input :photo%>
-              <%= f.input :photo_cache, as: :hidden %>
-              <%= f.button :submit, "save", class: 'btn btn-warning'  %>
-            <% end %>
-          </li>
-          <li class="delete-botton">
-            <% if current_user == @user %>
-             <p><%= link_to "delete my account", cancel_user_registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %></p>
-            <% end %>
-          </li>
-        <% end %>
-        </ul>
-
-    </div>
-    <div class="social">
-    </div>
+      </div>
+  </div>
 </div>
-</div>
+

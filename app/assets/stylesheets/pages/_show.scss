@@ -42,7 +42,7 @@
   margin-top: 70px;
 }
 .user-name {
-  font-family: $headers-font;
+  text-align: center;
 }
 
 .user-details {
@@ -119,8 +119,8 @@
     text-align: center;
 }
 .main h1 {
+    text-align: center;
     text-shadow: 0 -1px 0 #888888;
-    color: #cecece;
     font-size: 30px;
     margin-bottom: -3px;
 }
