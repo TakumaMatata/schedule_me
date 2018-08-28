@@ -13,14 +13,19 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-image: linear-gradient(rgba(170,170,170,0.1), rgba(170,170,170,0.1)), image-url("apple.jpg");
+  background-image: linear-gradient(rgba(170,170,170,0.1), rgba(170,170,170,0.1)), image-url("bannermaybe.jpg");
   background-size: cover;
   background-position: center;
   h1 {
     color: white;
     font-weight: bold;
     font-size: 85px;
+    text-align: center;
   }
+  h2 {
+    color:white;
+  }
+
   p {
     color: white;
     opacity: .8;
@@ -37,4 +42,6 @@
   margin-top: 120px;
 }
 
-
+.shadow{
+  text-shadow: 1px 1px 40px rgba(22, 23, 31, 0.4) !important;
+}
