@@ -3,15 +3,13 @@
     <div class="information-box">
 
       <div class="cover">
-        <div class="head">
+        <div class="show-information">
+          <% if @user.photo.blank?%>
+            <%= image_tag "user.svg"%>
+          <% else %>
+            <%= cl_image_tag @user.photo, crop: :fill, width: "120" %>
+          <% end %>
         </div>
-          <div class="show-information">
-            <% if @user.photo.blank?%>
-              <%= image_tag "user.svg"%>
-            <% else %>
-              <%= cl_image_tag @user.photo, crop: :fill, width: "120" %>
-            <% end %>
-          </div>
       </div>
       <div class="main">
         <h1><%= @user.first_name %>  <%= @user.last_name %></h1>
@@ -27,16 +25,14 @@
               <% end %>
             </li>
             <li class="delete-botton">
-              <% if current_user == @user %>
-               <p><%= link_to "delete my account", cancel_user_registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %></p>
-              <% end %>
+              <%= link_to "delete the account", cancel_user_registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %>
             </li>
           <% end %>
           </ul>
+        </div>
+        <div class="social">
       </div>
-      <div class="social">
     </div>
-      </div>
   </div>
 </div>
 
