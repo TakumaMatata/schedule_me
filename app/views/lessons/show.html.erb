@@ -3,10 +3,10 @@
     <div class="information-box">
       <div class="show-title text-center">
         <h3>
-          <%= @lesson.start_time.strftime("%l:%M %p") %>
           <%= @lesson.start_time.strftime("%A %B %e %Y ") %>
         </h3>
         <p>
+          <%= @lesson.start_time.strftime("%l:%M %p") %>
           <%= image_tag "time.svg", class: "small-icon" %><%= @lesson.course.duration %>mins
         </p>
         <h5>
@@ -53,8 +53,6 @@
               </div>
             <% end %>
 
-        </div>
-      </div>
         <ul class="list-inline">
           <li>
             <%= link_to edit_lesson_path(@lesson) do %>
@@ -67,6 +65,8 @@
             <% end %>
           </li>
         </ul>
+        </div>
+      </div>
      </div>
   </div>
 </div>
