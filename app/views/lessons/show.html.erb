@@ -35,24 +35,22 @@
                 <div class="student-photo">
                   <%= link_to student_path(enrollment.student) do %>
                   <%= cl_image_tag enrollment.student.photo, class: "user-photo-information" %>
-                   <% end %>
-
+                  <% end %>
                 </div>
 
                 <div class="student-comment">
-
-                  <% enrollment.memos.each do |memo| %>
-                     <%= memo.comment %>
-                  <% end %>
-
-                  <%= simple_form_for [enrollment, @memo] do |f| %>
-                    <%= f.input :comment %>
-                    <%= f.submit "add a review", class: "btn btn-primary" %>
+                  <% if enrollment.memos.count.zero? %>
+                    <%= simple_form_for [enrollment, @memo] do |f| %>
+                      <%= f.input :comment, placeholder: "comment", label: false %>
+                      <%= f.submit "add a review", class: "btn btn-primary" %>
+                    <% end %>
+                  <% else %>
+                    <% enrollment.memos.each do |memo| %>
+                      <%= memo.comment %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
-
-
             <% end %>
 
         </div>
