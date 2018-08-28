@@ -2,17 +2,6 @@
 
 <h1>Welcome back, <%=@user.first_name%>!</h1>
 
-  <p>
-    <% if @user.role == "manager"%>
-    These are the lessons you manage.
-      <%= link_to new_lesson_path do %>
-        <button type="button" class="btn btn-primary">Create a lesson</button>
-      <% end %>
-    <% else %>
-      These are the lessons you teach.
-    <% end %>
-  </p>
-
 <ul class="nav nav-tabs">
   <li class="active"><%= link_to "Weekly View", "#weekly_view", data: {toggle: "tab"} %></li>
   <li><%= link_to "Daily View", "#daily_view", data: {toggle: "tab"} %></li>
