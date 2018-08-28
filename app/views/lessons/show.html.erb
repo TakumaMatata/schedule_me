@@ -2,71 +2,75 @@
   <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
     <div class="information-box">
       <div class="show-title text-center">
-        <h3>
+        <h2>
           <%= @lesson.start_time.strftime("%A %B %e %Y ") %>
-        </h3>
-        <p>
+        </h2>
+        <h4>
           <%= @lesson.start_time.strftime("%l:%M %p") %>
           <%= image_tag "time.svg", class: "small-icon" %><%= @lesson.course.duration %>mins
-        </p>
-        <h5>
+        </h4>
+      </div>
+
+      <div class="teacher-information text-center">
+        <div class="user-photo">
+          <%= link_to user_path(@lesson.user) do%>
+            <% if @lesson.user.photo.blank?%>
+              <%= image_tag "user.svg", class: "user-photo-information" %>
+            <% else %>
+              <%= cl_image_tag @lesson.user.photo, crop: :fill, class: "teacher-photo-information"%>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="teacher-name text-center">
+        <h3>
+          <%= @lesson.user.first_name %>  <%= @lesson.user.last_name %>
+        </h3>
+      </div>
+      <div class="lesson-level text-center level-<%= @lesson.course.level.downcase %>">
+        <p>
           <%= @lesson.course.level %> - <%= @lesson.course.language %>
-        </h5>
+        </p>
       </div>
-      <div class="show-information">
-        <div class="teacher-information text-center">
-          <div class="user-photo">
-            <%= link_to user_path(@lesson.user) do%>
-              <% if @lesson.user.photo.blank?%>
-                <%= image_tag "user.svg", class: "user-photo-information" %>
-              <% else %>
-                <%= cl_image_tag @lesson.user.photo, crop: :fill, class: "user-photo-information"%>
+      <div class="students">
+        <% @lesson.enrollments.each do |enrollment| %>
+          <div class="student">
+            <div class="student-photo">
+              <%= link_to student_path(enrollment.student) do %>
+              <%= cl_image_tag enrollment.student.photo, class: "user-photo-information" %>
               <% end %>
-            <% end %>
-            <h3>
-              <%= @lesson.user.first_name %>  <%= @lesson.user.last_name %>
-            </h3>
+            </div>
+            <div class="student-comment">
+              <% if enrollment.memos.count.zero? %>
+                <%= simple_form_for [enrollment, @memo] do |f| %>
+                  <%= f.input :comment, placeholder: "comment", label: false %>
+                  <div style="text-align: right">
+                    <%= f.submit "add a review", class: "btn btn-primary"%>
+                  </div>
+                <% end %>
+              <% else %>
+                <% enrollment.memos.each do |memo| %>
+                  <%= memo.comment %>
+                <% end %>
+              <% end %>
+            </div>
           </div>
-        </div>
-        <div class="students">
-            <% @lesson.enrollments.each do |enrollment| %>
-              <div class="student">
-
-                <div class="student-photo">
-                  <%= link_to student_path(enrollment.student) do %>
-                  <%= cl_image_tag enrollment.student.photo, class: "user-photo-information" %>
-                  <% end %>
-                </div>
-
-                <div class="student-comment">
-                  <% if enrollment.memos.count.zero? %>
-                    <%= simple_form_for [enrollment, @memo] do |f| %>
-                      <%= f.input :comment, placeholder: "comment", label: false %>
-                      <%= f.submit "add a review", class: "btn btn-primary" %>
-                    <% end %>
-                  <% else %>
-                    <% enrollment.memos.each do |memo| %>
-                      <%= memo.comment %>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-
-        <ul class="list-inline">
-          <li>
-            <%= link_to edit_lesson_path(@lesson) do %>
-              <%= image_tag "pen.svg", class: "small-icon" %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure you want to DELETE the lesson?" } do %>
-              <%= image_tag "trash.svg", class: "small-icon" %>
-            <% end %>
-          </li>
-        </ul>
+        <% end %>
+        <div class="bottom">
+          <ul class="list-inline icon-line">
+            <li>
+              <%= link_to edit_lesson_path(@lesson) do %>
+            <!-- nozomi didn't get to design nice, please someone do -->
+              <% end %>
+            </li>
+            <li>
+              <%= link_to lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure you want to DELETE the lesson?" } do %>
+                <%= image_tag "trash.svg", class: "small-icon" %>
+              <% end %>
+            </li>
+          </ul>
         </div>
       </div>
-     </div>
+    </div>
   </div>
 </div>
