@@ -27,7 +27,16 @@
   height: 35px;
   width: 35px;
   border-radius: 50%;
+
 }
+
+.navbar-wagon .avatar:hover {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
 
 /* Right section */
 .navbar-wagon-right {
