@@ -1,23 +1,26 @@
 <div class="mini-search">
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans|Maven+Pro:500' rel='stylesheet' type='text/css'>
-  <div class="deco topdeco">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
   <section class="list-wrap">
     <div class="form-inline">
-      <h1>Student List</h1>
+       <%= image_tag "student_hat.svg", class: "index-icon" %>
     </div>
   <!-- <label for="search-text">Search the list</label> -->
   <input type="text" id="search-text" placeholder="search" class="search-box">
   <div class="list-count"></div>
   <ul id="list">
     <% @students.each do |student| %>
-      <li class="in"><%= link_to student.name, student_path(student) %></li>
+      <li class="in">
+        <% if student.photo.blank?%>
+          <%= image_tag "user.svg", class: "teachers-photos" %>
+        <% else %>
+          <%= cl_image_tag student.photo, crop: :fill, class: "teachers-photos"%>
+        <% end %>
+        <%= link_to student.name, student_path(student) %>
+      </li>
     <% end %>
     <span class="empty-item">no results</span>
   </ul>
   </section>
 </div>
+
+
+
