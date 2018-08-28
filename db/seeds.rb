@@ -16,7 +16,7 @@ test_user.save
 
 10.times do
   url = "https://kitt.lewagon.com/placeholder/users/random"
-  user_new = User.new(email: Faker::Internet.email, password: "123456", first_name: Faker::HarryPotter.character.split[0], last_name: Faker::HarryPotter.character.split[1], role: "teacher")
+  user_new = User.new(email: Faker::Internet.email, password: "123456", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, role: "teacher")
   user_new.remote_photo_url = url
   user_new.save
 end
@@ -52,7 +52,7 @@ description = "some description"
 
 50.times do
   url = "https://kitt.lewagon.com/placeholder/users/random"
-  student_new = Student.new(name: Faker::HarryPotter.character, birth_date: Faker::Time.between(50.years.ago, 6.years.ago, period = :all), category: category, description: description)
+  student_new = Student.new(name: Faker::GameOfThrones.character, birth_date: Faker::Time.between(50.years.ago, 6.years.ago, period = :all), category: category, description: description)
   student_new.remote_photo_url = url
   student_new.save
 end
