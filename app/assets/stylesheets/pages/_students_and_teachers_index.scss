@@ -38,6 +38,10 @@ ul {
 // warning from nozomi, this scss file is mixing up student/index file and teachers index
 // Student Index below
 
+  .teacher-ul ul:before {
+    content:'teachers' !important;
+  }
+
 .mini-search * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 
