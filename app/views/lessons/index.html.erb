@@ -1,20 +1,15 @@
 <div class = "container">
 
 <h1>Welcome back, <%=@user.first_name%>!</h1>
-
   <p>
     <% if @user.role == "manager"%>
     These are the lessons you manage.
-      <%= link_to new_lesson_path do %>
-        <button type="button" class="btn btn-primary">Create a lesson</button>
-      <% end %>
       <%= render 'weekly' %>
     <% else %>
       These are the lessons you teach.
       <%= render 'daily_teacher' %>
     <% end %>
   </p>
-
 </div>
 
 
