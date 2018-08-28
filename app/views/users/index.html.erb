@@ -1,43 +1,22 @@
-<div class="teachers-index">
-  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-    <div class="list-box">
-      <div class="list-title text-center">
-        <h1>Teachers list</h1>
-      </div>
-      <div class="list-function">
-        <ul class="list-inline">
-          <li class="searchbar form-inline">
-              <%= form_tag users_path, method: :get do %>
-              <%= text_field_tag :query, params[:query], size: 30, class: "form-control", placeholder: "out of order"%>
-              <%= button_tag "Search", type: "submit", class: "btn btn-primary" %>
-              <% end %>
-          </li>
-        </ul>
-      </div>
-      <div class="display-list">
-        <div class="listed-students">
-          <% @users.each do |user| %>
-            <ul class = "list-inline">
-              <li>
-                <% if user.photo.blank?%>
-                  <%= image_tag "user.svg", class: "teachers-photos" %>
-                <% else %>
-                  <%= cl_image_tag user.photo, crop: :fill, class: "teachers-photos"%>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to user_path(user) do %>
-                  <%= user.first_name %> <%= user.last_name %>
-                <% end %>
-              </li>
-            </ul>
-          <% end %>
-        </div>
-      </div>
+<div class="mini-search">
+  <section class="list-wrap">
+    <div class="form-inline">
+       <%= image_tag "id_card.svg", class: "index-icon" %>
     </div>
-  </div>
+  <input type="text" id="search-text" placeholder="search" class="search-box">
+  <div class="list-count"></div>
+  <ul id="list">
+    <% @users.each do |user| %>
+      <li class="in">
+        <% if user.photo.blank?%>
+          <%= image_tag "user.svg", class: "teachers-photos" %>
+        <% else %>
+          <%= cl_image_tag user.photo, crop: :fill, class: "teachers-photos"%>
+        <% end %>
+        <%= link_to user.first_name, user_path(user) %>
+      </li>
+    <% end %>
+    <span class="empty-item">no results</span>
+  </ul>
+  </section>
 </div>
-
-
-
-
