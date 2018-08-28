@@ -28,27 +28,33 @@
             </h3>
           </div>
         </div>
-        <div class="student">
-          <ul>
+        <div class="students">
             <% @lesson.enrollments.each do |enrollment| %>
-               <li>
-                 <h4>
-                   <%= link_to student_path(enrollment.student) do %>
-                    <%= cl_image_tag enrollment.student.photo %>
+              <div class="student">
+
+                <div class="student-photo">
+                  <%= link_to student_path(enrollment.student) do %>
+                  <%= cl_image_tag enrollment.student.photo, class: "user-photo-information" %>
                    <% end %>
-                 </h4>
-                 <p>
-                   <% enrollment.memos.each do |memo| %>
+
+                </div>
+
+                <div class="student-comment">
+
+                  <% enrollment.memos.each do |memo| %>
                      <%= memo.comment %>
-                   <% end %>
-                 </p>
-                 <%= simple_form_for [enrollment, @memo] do |f| %>
-                   <%= f.input :comment %>
-                   <%= f.submit "add a review", class: "btn btn-primary" %>
-                 <% end %>
-               </li>
+                  <% end %>
+
+                  <%= simple_form_for [enrollment, @memo] do |f| %>
+                    <%= f.input :comment %>
+                    <%= f.submit "add a review", class: "btn btn-primary" %>
+                  <% end %>
+                </div>
+              </div>
+
+
             <% end %>
-          </ul>
+
         </div>
       </div>
         <ul class="list-inline">
