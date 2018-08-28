@@ -28,7 +28,9 @@
       </div>
       <%= render 'shared/footer' %>
     <% else %>
-      <%= yield %>
+      <div class="main-pages">
+        <%= yield %>
+      </div>
     <% end %>
     <%= javascript_pack_tag 'mini_search_filter' %>
     <%= javascript_include_tag 'application' %>

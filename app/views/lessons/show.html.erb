@@ -1,6 +1,3 @@
-
-
-
 <div class="lesson-show">
   <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
     <div class="information-box">
@@ -36,7 +33,9 @@
             <% @lesson.enrollments.each do |enrollment| %>
                <li>
                  <h4>
-                   <%= link_to enrollment.student.name, student_path(enrollment.student) %>
+                   <%= link_to student_path(enrollment.student) do %>
+                    <%= cl_image_tag enrollment.student.photo %>
+                   <% end %>
                  </h4>
                  <p>
                    <% enrollment.memos.each do |memo| %>
@@ -50,8 +49,7 @@
                </li>
             <% end %>
           </ul>
-         </div>
-
+        </div>
       </div>
         <ul class="list-inline">
           <li>
@@ -67,3 +65,4 @@
         </ul>
      </div>
   </div>
+</div>
