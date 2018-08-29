@@ -1,7 +1,48 @@
-.small-icon-effect:hover{
+.form-structure {
+  display: flex;
+}
+.input-target {
+  flex-grow: 1;
+}
+
+.write-memo-icon:hover {
+  opacity: 0.8
+}
+
+.form-trash {
+  width: 35px;
   height: 35px;
-  width:35px;
-  opacity:0.6;
+  padding-right: 12px;
+  padding-top: 15px;
+}
+
+.lesson-info {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+}
+.lesson-info img {
+  width: 20px;
+  height: 20px;
+}
+.lesson-info span {
+  padding-left: 5px;
+}
+
+.lesson-details {
+  display: flex;
+  align-items: center;
+}
+
+.teacher-information {
+  margin: 45px 0;
+}
+
+
+.small-icon-effect:hover{
+  // height: 35px;
+  // width:20px;
+  opacity:0.8;
 }
 
 .teacher-photo-information {
@@ -51,7 +92,12 @@
 }
 .students {
   margin-top: 40px;
+  padding: 0 30px;
+  h4 {
+    padding-left: 10px;
+  }
 }
+
 .student {
   border-bottom: 1px solid rgba(220,224,244,0.4);
   border-top: 1px solid rgba(220,224,244,0.4);
@@ -64,7 +110,7 @@
 .information-box {
     background: white;
     overflow: hidden;
-    margin: 50px auto;
+    margin: 0 auto 50px auto;
     position: relative;
     -webkit-box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.5);
     -moz-box-shadow:    0px 5px 10px -5px rgba(0, 0, 0, 0.5);

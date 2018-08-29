@@ -1,13 +1,18 @@
-  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2">
     <div class="information-box">
       <div class="show-title text-center">
         <h2>
           <%= @lesson.start_time.strftime("%A %B %e %Y ") %>
         </h2>
-        <h4>
-          <%= @lesson.start_time.strftime("%l:%M %p") %>
-          <%= image_tag "time.svg", class: "small-icon" %><%= @lesson.course.duration %>mins
-        </h4>
+        <div class="lesson-info">
+          <div class="lesson-details">
+            <%= image_tag "time.svg"%><span style="padding-right: 15px;"><%= @lesson.start_time.strftime("%l:%M %p") %></span>
+          </div>
+          <div class="lesson-details">
+            <%= image_tag "sand-clock.svg" %><span><%= @lesson.course.duration %>mins</span>
+          </div>
+
+        </div>
       </div>
 
       <div class="teacher-information text-center">
@@ -20,18 +25,20 @@
             <% end %>
           <% end %>
         </div>
+        <div class="teacher-name text-center">
+          <h3>
+            <%= @lesson.user.first_name %>  <%= @lesson.user.last_name %>
+          </h3>
+        </div>
       </div>
-      <div class="teacher-name text-center">
-        <h3>
-          <%= @lesson.user.first_name %>  <%= @lesson.user.last_name %>
-        </h3>
-      </div>
+
       <div class="lesson-level text-center level-<%= @lesson.course.level.downcase %>">
-        <p>
+        <p style="padding: 2px 0;">
           <%= @lesson.course.level %> - <%= @lesson.course.language %>
         </p>
       </div>
       <div class="students">
+        <h4>Your students</h4>
         <% @lesson.enrollments.each do |enrollment| %>
           <div class="student">
             <div class="student-photo">
@@ -40,12 +47,18 @@
               <% end %>
             </div>
             <div class="student-comment">
+            <div class="student-name">
+              <strong><p><%= enrollment.student.name %></p></strong>
+            </div>
               <% if enrollment.memos.count.zero? %>
-                <%= simple_form_for [enrollment, @memo] do |f| %>
-                  <%= f.input :comment, placeholder: "comment", label: false %>
-                  <div style="text-align: right">
-                    <%= f.submit "add a review", class: "btn btn-primary"%>
+                <%= simple_form_for [enrollment, @memo], html: {class: "form-structure"} do |f| %>
+                  <div class="input-target">
+                    <%= f.input :comment, placeholder: "Leave a memo for this class", label: false %>
                   </div>
+
+                  <%= f.button :button do%>
+                    <%= image_tag "pen.svg", class: "small-icon write-memo-icon" %>
+                  <% end %>
                 <% end %>
               <% else %>
                 <% enrollment.memos.each do |memo| %>
@@ -63,10 +76,8 @@
               <% end %>
             </li>
             <li>
-              <p>Delete this lesson
                 <%= link_to lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure you want to DELETE the lesson?" } do %>
-                  <%= image_tag "trash.svg", class: "small-icon small-icon-effect" %>
-              </p>
+                  <%= image_tag "trash.svg", class: "small-icon small-icon-effect form-trash", alt: "Delete this lesson" %>
               <% end %>
             </li>
           </ul>
