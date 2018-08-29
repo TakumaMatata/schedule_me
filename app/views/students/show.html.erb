@@ -1,32 +1,43 @@
 <div class="student-show">
   <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
     <div class="information-box">
-      <div class="show-title text-center">
-        <h3><%= @student.name %></h3>
-      </div>
-      <div class="show-information text-center">
-        <ul>
-          <li><%= @student.name %></li>
-          <li><%= @student.category %></li>
-          <li><%= @student.birth_date.strftime("%B %e %Y") %></li>
-          <li><%= @student.description %></li>
-        </ul>
-      </div>
-      <ul class="edit-information">
-        <li>
-          <%= link_to edit_student_path(@student) do%>
-            <%= image_tag "pen.svg", class: "small-icon" %>
+      <div class="cover">
+        <div class="show-information">
+          <% if @student.photo.blank?%>
+            <%= image_tag "student_hat.svg"%>
+          <% else %>
+            <%= cl_image_tag @student.photo, crop: :fill, width: "120" %>
           <% end %>
-        </li>
-        <li>
-          <%= link_to student_path(@student), method: :delete, data: { confirm: "Are you sure?" } do %>
-            <%= image_tag "trash.svg", class: "small-icon" %>
+        </div>
+      </div>
+
+      <div class="main">
+        <h1><%= @student.name %></h1>
+        <h6><%= @student.birth_date.strftime("%B %e %Y") %></h6>
+        <h6><%= @student.category %></h6>
+        <h6><%= @student.description %></h6>
+          <ul class= "text-center">
+          <% if current_user.role == "manager" %>
+            <li class="change-photo">
+              <%= simple_form_for @student do |f| %>
+                <%= f.error_notification %>
+                <%= f.input :photo, label: false%>
+                <%= f.input :photo_cache, as: :hidden, style: "form-center" %>
+                <%= f.button :submit, "save", class: 'btn btn-warning'  %>
+              <% end %>
+            </li>
+            <li class="delete-botton">
+              <%= link_to "delete the student account", cancel_user_registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %>
+            </li>
           <% end %>
-        </li>
-      </ul>
+          </ul>
+        </div>
+        <div class="social">
+      </div>
     </div>
   </div>
 </div>
+
 
 
 

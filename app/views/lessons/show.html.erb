@@ -2,10 +2,10 @@
     <div class="information-box">
       <div class="show-title text-center">
         <h3>
-          <%= @lesson.start_time.strftime("%l:%M %p") %>
           <%= @lesson.start_time.strftime("%A %B %e %Y ") %>
         </h3>
         <p>
+          <%= @lesson.start_time.strftime("%l:%M %p") %>
           <%= image_tag "time.svg", class: "small-icon" %><%= @lesson.course.duration %>mins
         </p>
         <h5>
@@ -27,29 +27,31 @@
             </h3>
           </div>
         </div>
-        <div class="student">
-          <ul>
+        <div class="students">
             <% @lesson.enrollments.each do |enrollment| %>
-               <li>
-                 <h4>
-                   <%= link_to student_path(enrollment.student) do %>
-                    <%= cl_image_tag enrollment.student.photo %>
-                   <% end %>
-                 </h4>
-                 <p>
-                   <% enrollment.memos.each do |memo| %>
-                     <%= memo.comment %>
-                   <% end %>
-                 </p>
-                 <%= simple_form_for [enrollment, @memo] do |f| %>
-                   <%= f.input :comment %>
-                   <%= f.submit "add a review", class: "btn btn-primary" %>
-                 <% end %>
-               </li>
+              <div class="student">
+
+                <div class="student-photo">
+                  <%= link_to student_path(enrollment.student) do %>
+                  <%= cl_image_tag enrollment.student.photo, class: "user-photo-information" %>
+                  <% end %>
+                </div>
+
+                <div class="student-comment">
+                  <% if enrollment.memos.count.zero? %>
+                    <%= simple_form_for [enrollment, @memo] do |f| %>
+                      <%= f.input :comment, placeholder: "comment", label: false %>
+                      <%= f.submit "add a review", class: "btn btn-primary" %>
+                    <% end %>
+                  <% else %>
+                    <% enrollment.memos.each do |memo| %>
+                      <%= memo.comment %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
             <% end %>
-          </ul>
-        </div>
-      </div>
+
         <ul class="list-inline">
           <li>
             <%= link_to edit_lesson_path(@lesson) do %>
@@ -62,6 +64,8 @@
             <% end %>
           </li>
         </ul>
+        </div>
+      </div>
      </div>
   </div>
 </div>

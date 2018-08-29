@@ -7,7 +7,7 @@ class Student < ApplicationRecord
     }
   mount_uploader :photo, PhotoUploader
   has_many :lessons, through: :enrollments
-  has_many :memo, through: :enrollments
+  has_many :memos, through: :enrollments
   has_many :enrollments
   validates :name, presence: true
 end
