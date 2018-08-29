@@ -1,0 +1,5 @@
+meta_product_name: "ScheduleMe"
+meta_title: "ScheduleMe - effortlessly manage schedules at language schools"
+meta_description: "Scheduleme is the best website to manage schedules effortlessly in a team for language schools"
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
