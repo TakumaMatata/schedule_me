@@ -4,21 +4,31 @@
     <div class="form">
       <div class="form-title text-center">
         <h2>New lesson</h2>
-        <%= image_tag "teaching.svg", class: "form-icon" %>
+        <%= image_tag "teaching.svg", class: "index-icon" %>
       </div>
-      <div class="form-imput text-center">
+      <div class="form-imput">
         <%= simple_form_for @lesson, html: { class: "time-picker"} do |form| %>
           <%= form.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} unless params[:start_time] %>
           <%= form.datetime_select :start_time, value: params[:start_time], required: false if params[:start_time] %>
           <%= form.association :room, collection: Room.order('name'), label_method: :name,  prompt: "Choose a room" %>
           <%= form.association :course, collection: Course.order('level'), label_method: :course_name,  prompt: "Choose a course" %>
-          <%= form.association :user, label: :Teacher, collection: User.order('first_name'), label_method: :first_name,  prompt: "Choose a Teacher" %>
-          <label for="id_label_multiple">
-            Students <br>
-            <%= select_tag "students", options_from_collection_for_select(
-                  Student.all, :id, :name),
-                  class: 'select2 js-example-basic-multiple js-states form-control', id: "id_label_multiple", name: "students[]", multiple: "multiple" %>
-          </label>
+          <%#= form.association :user, label: :Teacher, collection: User.order('first_name'), label_method: :first_name,  prompt: "Choose a Teacher" %>
+          <div id="teachers-select2">
+            <label for="id_label_multiple2">
+              Teachers <br>
+              <%= select_tag "teachers", options_from_collection_for_select(
+                    User.all, :id, :first_name),
+                    class: 'select2 js-example-basic-multiple js-states form-control students-width', id: "id_label_multiple2", name: "users[]", multiple: "multiple", style: "width:714%;"%>
+            </label>
+          </div>
+          <div id="students">
+            <label for="id_label_multiple">
+              Students <br>
+              <%= select_tag "students", options_from_collection_for_select(
+                    Student.all, :id, :name),
+                    class: 'select2 js-example-basic-multiple js-states form-control students-width', id: "id_label_multiple", name: "students[]", multiple: "multiple" %>
+            </label>
+          </div>
           <%= simple_fields_for :recurring_check do |n| %>
               <p><%= n.input :recurring, as: :boolean, checked_value: true, unchecked_value: false %>for
                 <%= n.select :weeks, (2..52) %>weeks</p>
@@ -29,4 +39,3 @@
     </div>
   </div>
 </div>
-
