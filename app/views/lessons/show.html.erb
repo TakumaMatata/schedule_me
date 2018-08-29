@@ -63,8 +63,10 @@
               <% end %>
             </li>
             <li>
-              <%= link_to lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure you want to DELETE the lesson?" } do %>
-                <%= image_tag "trash.svg", class: "small-icon" %>
+              <p>Delete this lesson
+                <%= link_to lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure you want to DELETE the lesson?" } do %>
+                  <%= image_tag "trash.svg", class: "small-icon small-icon-effect" %>
+              </p>
               <% end %>
             </li>
           </ul>
