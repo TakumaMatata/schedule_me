@@ -13,15 +13,15 @@
           <%= form.association :room, collection: Room.order('name'), label_method: :name,  prompt: "Choose a room" %>
           <%= form.association :course, collection: Course.order('level'), label_method: :course_name,  prompt: "Choose a course" %>
           <%#= form.association :user, label: :Teacher, collection: User.order('first_name'), label_method: :first_name,  prompt: "Choose a Teacher" %>
-          <div id="teachers-select2">
+          <div id="teachers-select2" class="form-group lesson-select">
             <label for="id_label_multiple2">
               Teachers <br>
               <%= select_tag "teachers", options_from_collection_for_select(
                     User.all, :id, :first_name),
-                    class: 'select2 js-example-basic-multiple js-states form-control students-width', id: "id_label_multiple2", name: "users[]", multiple: "multiple", style: "width:714%;"%>
+                    class: 'select2 js-example-basic-multiple js-states form-control students-width', id: "id_label_multiple2", name: "lesson[teacher_id]", multiple: "multiple" %>
             </label>
           </div>
-          <div id="students">
+          <div id="students" class="form-group lesson-select">
             <label for="id_label_multiple">
               Students <br>
               <%= select_tag "students", options_from_collection_for_select(
@@ -29,11 +29,13 @@
                     class: 'select2 js-example-basic-multiple js-states form-control students-width', id: "id_label_multiple", name: "students[]", multiple: "multiple" %>
             </label>
           </div>
-          <%= simple_fields_for :recurring_check do |n| %>
-              <p><%= n.input :recurring, as: :boolean, checked_value: true, unchecked_value: false %>for
-                <%= n.select :weeks, (2..52) %>weeks</p>
-          <% end %>
-          <%= form.button :submit, class: "btn btn-primary" %>
+            <div>
+            <%= simple_fields_for :recurring_check do |n| %>
+            <p><%= n.input :recurring, as: :boolean, checked_value: true, unchecked_value: false %>for
+            <%= n.select :weeks, (2..52) %>weeks</p>
+            <% end %>
+            </div>
+          <%= form.button :submit, class: "btn btn-primary button" %>
         <% end %>
       </div>
     </div>
