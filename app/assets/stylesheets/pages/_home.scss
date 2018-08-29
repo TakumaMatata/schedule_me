@@ -2,6 +2,8 @@
 h1{
    font-size:25px;
    text-align: left;
+   padding-top:9px;
+   padding-bottom: 10px;
 }
 .service-box{
    text-transform:capitalize;
@@ -50,28 +52,28 @@ h1{
 }
 
 .service-box .service-icon .front-content i {
-  font-size: 28px;
+  font-size: 35px;
   color: #fff;
   font-weight: normal;
 }
 
 .service-box .service-icon .front-content h3 {
-  font-size: 15px;
+  font-size: 20px;
   color: #fff;
   text-align: center;
   margin-bottom: 15px;
   text-transform: uppercase;
 }
 .service-box .service-content h3 {
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 700;
   color: #fff;
   margin-bottom:10px;
   text-transform: uppercase;
 }
 .service-box .service-content p {
-  font-size: 15px;
-  color: #b1b1b1;
+  font-size: 18px;
+  color: #f7f7f7;
   margin:0;
 }
 .yellow{background-color: #ffc000;}
