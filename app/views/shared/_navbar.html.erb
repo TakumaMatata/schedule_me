@@ -18,18 +18,18 @@
       <div class="navbar-bottons navbar-wagon-item">
         <ul class="list-inline">
           <% if current_user.role == "manager"%>
-            <li>
+            <li class="after-icon teaching">
               <%= link_to new_lesson_path do %>
-                <%= image_tag "teaching.svg", class: " avatar" %>
+                <%= image_tag "teaching.svg", class: "avatar" %>
               <% end %>
             </li>
           <% end %>
-          <li>
+          <li class="after-icon id-card">
             <%= link_to users_path do %>
               <%= image_tag "id_card.svg", class: " avatar" %>
             <% end %>
           </li>
-          <li>
+          <li class="after-icon student-hat">
             <%= link_to students_path do %>
               <%= image_tag "student_hat.svg", class: " avatar" %>
             <% end %>

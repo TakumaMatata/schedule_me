@@ -38,7 +38,7 @@
         </p>
       </div>
       <div class="students">
-        <h4>Your students</h4>
+        <h4><%= @lesson.user.first_name %>'s students</h4>
         <% @lesson.enrollments.each do |enrollment| %>
           <div class="student">
             <div class="student-photo">

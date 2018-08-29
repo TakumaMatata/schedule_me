@@ -15,14 +15,37 @@
         <h1><%= @student.name %></h1>
         <h6><%= @student.birth_date.strftime("%B %e %Y") %></h6>
         <h6><%= @student.category %></h6>
-        <h6><%= @student.description %></h6>
+
+        <div class="student-memo">
+          <h3>Memo from teachers</h3>
+          <div class="student-memo-list">
+            <% if @student.memos.empty? %>
+              <p>No memo available yet</p>
+            <% else %>
+              <% @student.memos.each do |memo| %>
+                <div class="student-memo-item">
+                  <%= cl_image_tag memo.enrollment.lesson.user.photo, crop: :fill, class: "memo-teacher-pic"%>
+                  <div class="student-memo-details">
+                    <p>
+                      <%= memo.enrollment.lesson.course.language %> - <%= memo.enrollment.lesson.course.level %>
+                    </p>
+                    <p><%= memo.comment %></p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
           <ul class= "text-center">
           <% if current_user.role == "manager" %>
             <li class="change-photo">
               <%= simple_form_for @student do |f| %>
                 <%= f.error_notification %>
-                <%= f.input :photo, label: false%>
-                <%= f.input :photo_cache, as: :hidden, style: "form-center" %>
+                <div style="text-align: center">
+                  <%= f.input :photo, label: false%>
+                <%= f.input :photo_cache, as: :hidden %>
+                </div>
                 <%= f.button :submit, "save", class: 'btn btn-warning'  %>
               <% end %>
             </li>
