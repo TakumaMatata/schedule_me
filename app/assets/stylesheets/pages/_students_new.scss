@@ -9,7 +9,6 @@
 }
 
 .form-imput {
-  margin-top: 25px;
   margin-bottom: 50px;
   padding:20px;
 }
@@ -17,3 +16,24 @@
   height: 60px;
   width: 60px;
 }
+
+.form-group {
+    margin-bottom: 15px;
+    width: 500px;
+    align-items: center;
+    margin-left: 35px;
+}
+.lesson-select {
+  label {
+    width: 100%
+  }
+}
+
+.button {
+  margin:0 auto;
+  display:block;
+}
+.select2-container {
+  width: 100% !important;
+}
+
