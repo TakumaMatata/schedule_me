@@ -39,7 +39,7 @@ class LessonsController < ApplicationController
           authorize new_lesson
           new_lesson.save
         end
-        redirect_to lessons_path
+        redirect_to lesson_path(@lesson)
       else
         render :new
       end
@@ -48,7 +48,7 @@ class LessonsController < ApplicationController
       authorize @lesson
       if @lesson.save
         @lesson.add_students(params[:students]) if params[:students]
-        redirect_to lessons_path
+        redirect_to lesson_path(@lesson)
       else
         render :new
       end
