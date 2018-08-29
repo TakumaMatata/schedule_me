@@ -1,6 +1,6 @@
 
 <div class="lesson-new">
-  <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
     <div class="form">
       <div class="form-title text-center">
         <h2>New lesson</h2>
@@ -8,8 +8,8 @@
       </div>
       <div class="form-imput">
         <%= simple_form_for @lesson, html: { class: "time-picker"} do |form| %>
-          <%= form.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} unless params[:start_time] %>
-          <%= form.datetime_select :start_time, value: params[:start_time], required: false if params[:start_time] %>
+          <%= form.input :start_time, as: :string, required: false, input_html: {class: "datepicker", value: params[:start_time] } %>
+          <%#= form.datetime_select :start_time, value: params[:start_time], required: false if params[:start_time] %>
           <%= form.association :room, collection: Room.order('name'), label_method: :name,  prompt: "Choose a room" %>
           <%= form.association :course, collection: Course.order('level'), label_method: :course_name,  prompt: "Choose a course" %>
           <%#= form.association :user, label: :Teacher, collection: User.order('first_name'), label_method: :first_name,  prompt: "Choose a Teacher" %>
@@ -29,10 +29,10 @@
                     class: 'select2 js-example-basic-multiple js-states form-control students-width', id: "id_label_multiple", name: "students[]", multiple: "multiple" %>
             </label>
           </div>
-            <div class="checkbox">
+            <div class="form-group lesson-recurring">
             <%= simple_fields_for :recurring_check do |n| %>
-            <p><%= n.input :recurring, as: :boolean, checked_value: true, unchecked_value: false %>for
-            <%= n.select :weeks, (2..52) %>weeks</p>
+            <%= n.input :recurring, as: :boolean, checked_value: true, unchecked_value: false %><p>for</p>
+            <%= n.select :weeks, (2..52) %> <p>weeks</p>
             <% end %>
             </div>
           <%= form.button :submit, class: "btn btn-primary button" %>

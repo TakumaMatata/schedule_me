@@ -19,9 +19,9 @@
 
 .form-group {
     margin-bottom: 15px;
-    width: 500px;
+    // width: 500px;
     align-items: center;
-    margin-left: 35px;
+    // margin-left: 35px;
 }
 .lesson-select {
   label {
@@ -40,4 +40,33 @@
 .checkbox {
   display: flex;
   align-items: center;
+}
+
+.lesson-recurring {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  fieldset {
+    margin-left: 0;
+    width: auto;
+    margin-bottom: 0;
+    margin-right: 5px;
+  }
+  .form-check-input {
+    margin-right: 5px;
+  }
+  select {
+    margin: 0 5px;
+  }
+  p {
+    font-weight: bold;
+    margin: 0;
+  }
+  label {
+    margin-bottom: 0;
+  }
+}
+
+#new_lesson {
+  padding: 0 5px;
 }
