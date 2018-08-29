@@ -237,4 +237,25 @@
     -o-transition: all .5s; /* Opera */
 }
 
+.student-memo {
+  margin: 30px 0;
+}
+.student-memo-list {
+  padding: 40px 0;
+}
+
+.student-memo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.student-memo-details {
+  padding-left: 20px;
+}
+
+.memo-teacher-pic {
+  width: 80px;
+  border-radius: 50%;
+}
+
 

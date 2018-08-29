@@ -30,15 +30,15 @@
 
 }
 
-.navbar-wagon .avatar:hover {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all  0.3s ease;
-}
+// .navbar-wagon .avatar:hover {
+//   height: 50px;
+//   width: 50px;
+//   border-radius: 50%;
+//   -webkit-transition: all 0.3s ease;
+//   -moz-transition: all 0.3s ease;
+//   -o-transition: all 0.3s ease;
+//   transition: all  0.3s ease;
+// }
 
 
 /* Right section */
@@ -120,6 +120,44 @@
   text-decoration: none;
   color: white;
   opacity: 0.6;
+}
+
+.after-icon {
+  position: relative;
+}
+
+.after-icon:hover::after {
+  transform: scale(1);
+}
+
+%after-def {
+  color: white;
+  background-color: #5C5C5C;
+  font-size: 12px;
+  position: absolute;
+  top: 110%;
+  left: -20px;
+  padding: 5px 10px;
+  white-space: nowrap;
+  text-align:center;
+  border-radius: 5px;
+  transform: scale(0);
+  transition: transform ease-out 200ms;
+}
+
+.teaching::after {
+  @extend %after-def;
+  content: "New lesson";
+}
+
+.id-card::after {
+  @extend %after-def;
+  content: "Teachers List";
+}
+
+.student-hat::after {
+  @extend %after-def;
+  content: "Students List";
 }
 
 
