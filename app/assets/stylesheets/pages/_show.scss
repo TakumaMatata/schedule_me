@@ -1,5 +1,68 @@
+.small-icon-effect:hover{
+  height: 35px;
+  width:35px;
+  opacity:0.6;
+}
+
+.teacher-photo-information {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+.user-photo {
+  margin: 25px;
+}
+.teacher-name {
+  margin: 35px;
+}
+.level-novice {
+  background-color: $yellow;
+  opacity: 0.7;
+}
+
+.level-conversational {
+  background-color: $green;
+  opacity: 0.7;
+}
+
+.level-business {
+  background-color: $blue;
+  opacity: 0.7;
+}
+
+.level-advanced {
+  background-color: $red;
+  opacity: 0.7;
+}
+
+.lesson-level p {
+  color: white;
+}
+
+.icon-line {
+  text-align: right;
+  background-color: white;
+  margin-bottom: 5px;
+}
+.student-comment {
+  flex-grow: 1;
+  padding-left: 20px;
+}
+.students {
+  margin-top: 40px;
+}
+.student {
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+  border-top: 1px solid rgba(220,224,244,0.4);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  margin: 1px;
+}
+
 .information-box {
-    background: #eeeeee;
+    background: white;
     overflow: hidden;
     margin: 50px auto;
     position: relative;
@@ -13,7 +76,6 @@
   height: 120px;
   width: 120px;
   border-radius: 50%;
-  background-size: cover;
 }
 
 .profile-show{
@@ -28,7 +90,7 @@
   margin-top: 70px;
 }
 .user-name {
-  font-family: $headers-font;
+  text-align: center;
 }
 
 .user-details {
@@ -46,7 +108,7 @@
 
 
 .cover {
-    background: url('https://kitt.lewagon.com/placeholder/cities/random') no-repeat center;
+    background: url('https://picsum.photos/200/300/?random') center;
     height: 180px;
     position: relative;
     -webkit-box-shadow: 0px 5px 5px -5px rgba(50, 50, 50, 0.3);
@@ -105,8 +167,8 @@
     text-align: center;
 }
 .main h1 {
+    text-align: center;
     text-shadow: 0 -1px 0 #888888;
-    color: #cecece;
     font-size: 30px;
     margin-bottom: -3px;
 }
