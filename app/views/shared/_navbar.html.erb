@@ -47,7 +47,7 @@
 
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li style= "text-align: center" >
-            <%=@user.first_name%>
+            <%=current_user.first_name%>
           </li>
           <li>
             <%= link_to user_path(current_user) do %>
