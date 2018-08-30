@@ -151,12 +151,25 @@
 .clear { clear: both; }
 
 
+.delete-button {
+    a {
+      color:white;
+    }
+    color: white;
+    margin-top: 20px;
+    text-decoration: none;
+}
 
+.save-button {
+  background-color: #56ac35;
+  border-color: #d6181800;
+}
 
 .cover {
-    background: url('https://picsum.photos/200/300/?random') center;
+    background: url('https://picsum.photos/1920/1080/?random') center;
     height: 180px;
     position: relative;
+    background-size: cover;
     -webkit-box-shadow: 0px 5px 5px -5px rgba(50, 50, 50, 0.3);
     -moz-box-shadow:    0px 5px 5px -5px rgba(50, 50, 50, 0.3);
     box-shadow:         0px 5px 5px -5px rgba(50, 50, 50, 0.3);
@@ -258,4 +271,11 @@
   border-radius: 50%;
 }
 
+.users-show-alignment {
+  width: 275px;
+  margin: 0 auto;
+}
 
+.margin-alignment {
+  margin-right: 45px;
+}
