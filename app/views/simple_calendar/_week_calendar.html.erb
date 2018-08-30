@@ -1,7 +1,7 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
     <%= link_to calendar.url_for_previous_view do %>
-      <i class="fas fa-caret-left fa-lg"></i>
+      <i class="fas fa-caret-left fa-2x"></i>
     <% end %>
     <% if calendar.number_of_weeks == 1 %>
       <span class="calendar-title">Week <%= calendar.week_number %></span>
@@ -9,7 +9,7 @@
         <span class="calendar-title">Week <%= calendar.week_number %> - <%= calendar.end_week %></span>
     <%end%>
     <%= link_to  calendar.url_for_next_view do %>
-      <i class="fas fa-caret-right fa-lg"></i>
+      <i class="fas fa-caret-right fa-2x"></i>
     <% end %>
   </div>
 
