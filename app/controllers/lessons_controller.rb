@@ -41,7 +41,7 @@ class LessonsController < ApplicationController
         end
         redirect_to lesson_path(@lesson)
       else
-        render :new, start_time: params[:start_time], room_id: params[:room_id]
+        render :new
       end
     else
       @lesson = Lesson.new(lesson_params)
@@ -50,7 +50,8 @@ class LessonsController < ApplicationController
         @lesson.add_students(params[:students]) if params[:students]
         redirect_to lesson_path(@lesson)
       else
-        render :new, start_time: params[:start_time], room_id: params[:room_id]
+        # render :new, start_time: params[:start_time], room_id: params[:room_id]
+        render :new
       end
     end
   end
