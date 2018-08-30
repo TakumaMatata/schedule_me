@@ -19,24 +19,33 @@ h1{
   margin-bottom:10px;
   perspective:1000px;
   -webkit-perspective:1000px;
+  display: flex;
+  justify-content: center;
 }
+
+
 .service-icon{
-  width: 100%;
+  width: 220px;
   height: 220px;
   padding: 20px;
+  border-radius: 50%;
   text-align: center;
   transition: all .5s ease;
 }
 
 .service-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50px;
   z-index: 1;
   opacity: 0;
-  width: 100%;
+  width: 220px;
   height: 220px;
   padding: 20px;
+  border-radius: 50%;
   text-align: center;
   transition: all .5s ease;
   background-color: #474747;
@@ -72,18 +81,33 @@ h1{
   text-transform: uppercase;
 }
 .service-box .service-content h3 {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 700;
   color: #fff;
   margin-bottom:10px;
   text-transform: uppercase;
+  margin-top: 0;
 }
 .service-box .service-content p {
-  font-size: 18px;
+  font-size: 14px;
   color: #f7f7f7;
   margin:0;
 }
-.yellow{background-color: #ffc000;}
+
+
+.service-box-yellow {
+  background-color: #ffcd00;
+}
+
+.service-box-green {
+  background-color: #50c73b;
+}
+
+.service-box-blue {
+  background-color: #45a8b9;
+}
+
+.yellow{background-color: #D7CA6D;}
 .orange{background-color: #F08E35;}
 .red{background-color: #e84b3a;}
 .green{background-color: #4EA846;}
