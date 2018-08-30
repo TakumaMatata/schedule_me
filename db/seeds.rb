@@ -30,13 +30,6 @@ test_user_4 = User.new(email: "fumiko@gmail.com", password: "123456", first_name
 test_user_4.remote_photo_url = test_url
 test_user_4.save
 
-10.times do
-  url = "https://kitt.lewagon.com/placeholder/users/random"
-  user_new = User.new(email: Faker::Internet.email, password: "123456", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, role: "teacher")
-  user_new.remote_photo_url = url
-  user_new.save
-end
-
 puts "Created #{User.count} users"
 
 # Term.create(name: "1st semester", start_date: DateTime.new(2018,4,1,0), end_date: DateTime.new(2018,6,30,24))
@@ -62,52 +55,117 @@ levels.each do |l|
   course.save
 end
 
-category = "student"
-description = "some description"
+students = [
+  { name: "Ableen Tai",
+    url: "https://kitt.lewagon.com/placeholder/users/ableen",
+    },
+  { name: "George Walden",
+    url: "https://kitt.lewagon.com/placeholder/users/Georgewwalden7",
+    },
+  { name: "David Li",
+    url: "https://kitt.lewagon.com/placeholder/users/DavidLi920",
+   },
+  { mame: "Henry Haller",
+    url: "https://kitt.lewagon.com/placeholder/users/HenryHaller",
+   },
+  { name: "Hiroki Furuichi",
+    url: "https://kitt.lewagon.com/placeholder/users/aivvinna",
+   },
+  { name: "Jan Paul Hoga",
+    url: "https://kitt.lewagon.com/placeholder/users/jphoga",
+  },
+  { name: "Katrina Ariola",
+    url: "https://kitt.lewagon.com/placeholder/users/naneng",
+  },
+  { name: "Larry Nevins",
+    url: "https://kitt.lewagon.com/placeholder/users/ringochico",
+  },
+  { name: "Matthew Frazier",
+    url: "https://kitt.lewagon.com/placeholder/users/mattfraz38",
+  },
+  { name: "Tania Perales",
+    url: "https://kitt.lewagon.com/placeholder/users/taniadl",
+  },
+  { name: "Tsuzumi Sato",
+    url: "https://kitt.lewagon.com/placeholder/users/sato623"
+  },
+  { name: "Sylvain Pierre",
+    url: "https://kitt.lewagon.com/placeholder/users/SylvainPierre"
+  },
+  { name: "Paul Gaumer",
+    url: "https://kitt.lewagon.com/placeholder/users/paulgaumer"
+  },
+  { name: "Douglas Berkley",
+    url: "https://kitt.lewagon.com/placeholder/users/dmbf29"
+  },
+  { name: "Hidehiro Nagaoka",
+    url: "https://kitt.lewagon.com/placeholder/users/hidehiro98"
+  },
+  { name: "Maria Altyeva",
+    url: "https://kitt.lewagon.com/placeholder/users/maltyeva"
+  },
+    { name: "Reyes Montemayor",
+    url: "https://kitt.lewagon.com/placeholder/users/reymon29"
+  },
+    { name: "Matheus Penchel",
+    url: "https://kitt.lewagon.com/placeholder/users/mcpenchel"
+  },
+    { name: "Tomomi Shiba",
+    url: "https://kitt.lewagon.com/placeholder/users/tomcana"
+  }
+]
 
-50.times do
+category = "student"
+
+students.each do |s|
+  url = s[:url]
+  student_new = Student.new(name: s[:name], birth_date: Faker::Time.between(50.years.ago, 6.years.ago, period = :all), category: category)
+  student_new.remote_photo_url = url
+  student_new.save
+end
+
+80.times do
   url = "https://kitt.lewagon.com/placeholder/users/random"
-  student_new = Student.new(name: Faker::GameOfThrones.character, birth_date: Faker::Time.between(50.years.ago, 6.years.ago, period = :all), category: category, description: description)
+  student_new = Student.new(name: Faker::Name.name, birth_date: Faker::Time.between(50.years.ago, 6.years.ago, period = :all), category: category)
   student_new.remote_photo_url = url
   student_new.save
 end
 puts "Created #{Student.count} students."
 
-user_id = User.first.id + 1
+user_id_1 = User.first.id + 1
 course_id = Course.first.id
 room_id_1 = Room.first.id
-Lesson.create(start_time: DateTime.new(2018,8,27,10), course_id: course_id, user_id: user_id, room_id: room_id_1)
-user_id = user_id + 1
+Lesson.create(start_time: DateTime.new(2018,8,27,10), course_id: course_id, user_id: user_id_1, room_id: room_id_1)
+user_id_2 = user_id_1 + 1
 course_id = course_id + 1
 room_id_2 = room_id_1 + 1
-Lesson.create(start_time: DateTime.new(2018,8,27,10), course_id: course_id, user_id: user_id, room_id: room_id_2)
-user_id = user_id + 1
+Lesson.create(start_time: DateTime.new(2018,8,27,10), course_id: course_id, user_id: user_id_2, room_id: room_id_2)
+user_id_3 = user_id_2 + 1
 course_id = course_id + 1
 room_id_3 = room_id_2 + 1
-Lesson.create(start_time: DateTime.new(2018,8,27,10), course_id: course_id, user_id: user_id, room_id: room_id_3)
-user_id = user_id + 1
+Lesson.create(start_time: DateTime.new(2018,8,27,10), course_id: course_id, user_id: user_id_3, room_id: room_id_3)
 course_id = course_id + 1
-Lesson.create(start_time: DateTime.new(2018,8,27,11), course_id: course_id, user_id: user_id, room_id: room_id_1)
-user_id = user_id + 1
+Lesson.create(start_time: DateTime.new(2018,8,27,11), course_id: course_id, user_id: user_id_3, room_id: room_id_1)
 course_id = course_id -1
-Lesson.create(start_time: DateTime.new(2018,8,27,13), course_id: course_id, user_id: user_id, room_id: room_id_2)
-user_id = user_id + 1
+Lesson.create(start_time: DateTime.new(2018,8,27,13), course_id: course_id, user_id: user_id_2, room_id: room_id_2)
 course_id = course_id -1
-Lesson.create(start_time: DateTime.new(2018,8,27,15), course_id: course_id, user_id: user_id, room_id: room_id_3)
-user_id = user_id + 1
+Lesson.create(start_time: DateTime.new(2018,8,27,15), course_id: course_id, user_id: user_id_1, room_id: room_id_3)
 course_id = course_id -1
-Lesson.create(start_time: DateTime.new(2018,8,28,9), course_id: course_id, user_id: user_id, room_id: room_id_1)
+Lesson.create(start_time: DateTime.new(2018,8,28,9), course_id: course_id, user_id: user_id_1, room_id: room_id_1)
 
 puts "Created #{Lesson.count} lessons in the last week of August 2018"
 
 lessons = Lesson.all
 lessons.each do |l|
-  Enrollment.create(lesson_id: l.id, student_id: Student.all.sample.id)
+  5.times do
+    Enrollment.create(lesson_id: l.id, student_id: Student.all.sample.id)
+  end
 end
 
 puts "Created #{Enrollment.count} lessons."
 
-# comment = ["Great student!", "Very attentive", "strives to reach full potential", "Didn't do homework"]
+comment = ["Pronunciation has improved drastically.", "Needs extra help with spelling.", "Has difficulty with past tense.",
+"Learns new target structures quickly."]
 
 50.times do
   Memo.create(comment: comment.sample, enrollment_id: Enrollment.all.sample.id)
