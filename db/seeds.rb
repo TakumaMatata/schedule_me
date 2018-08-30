@@ -39,10 +39,10 @@ end
 
 puts "Created #{User.count} users"
 
-# Term.create(name: "1st semester", start_date: DateTime.new(2018,4,1,0), end_date: DateTime.new(2018,6,30,24))
+Term.create(name: "1st semester", start_date: DateTime.new(2018,4,1,0), end_date: DateTime.new(2018,6,30,24))
 Term.create(name: "2nd semester", start_date: DateTime.new(2018,7,1,0), end_date: DateTime.new(2018,9,30,24))
-# Term.create(name: "3rd semester", start_date: DateTime.new(2018,10,1,1), end_date: DateTime.new(2018,12,31,24))
-# Term.create(name: "4th semester", start_date: DateTime.new(2019,1,1,0), end_date: DateTime.new(2018,3,31,24))
+Term.create(name: "3rd semester", start_date: DateTime.new(2018,10,1,1), end_date: DateTime.new(2018,12,31,24))
+Term.create(name: "4th semester", start_date: DateTime.new(2019,1,1,0), end_date: DateTime.new(2018,3,31,24))
 
 puts "Created #{Term.count} semesters for a year from #{DateTime.new(2018,4,1,0)} to #{DateTime.new(2018,3,31,24)}"
 
@@ -54,7 +54,7 @@ puts "Created #{Room.count} rooms from #{Room.first.name} to #{Room.last.name}"
 
 language = "English"
 levels = ["Novice", "Conversational", "Business", "Advanced"]
-# durations = [30, 45, 60, 90]
+durations = [30, 45, 60, 90]
 terms = Term.all
 
 levels.each do |l|
@@ -107,10 +107,3 @@ end
 
 puts "Created #{Enrollment.count} lessons."
 
-# comment = ["Great student!", "Very attentive", "strives to reach full potential", "Didn't do homework"]
-
-50.times do
-  Memo.create(comment: comment.sample, enrollment_id: Enrollment.all.sample.id)
-end
-
-puts "Created #{Memo.count} memos."
