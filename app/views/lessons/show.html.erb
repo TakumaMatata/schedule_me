@@ -55,10 +55,11 @@
                   <div class="input-target">
                     <%= f.input :comment, placeholder: "Leave a memo for this class", label: false %>
                   </div>
-
+                  <div class="svg-background">
                   <%= f.button :button do%>
-                    <%= image_tag "pen.svg", class: "small-icon write-memo-icon" %>
+                    <%= image_tag "share-option.svg", class: "small-icon write-memo-icon " %>
                   <% end %>
+                </div>
                 <% end %>
               <% else %>
                 <% enrollment.memos.each do |memo| %>
