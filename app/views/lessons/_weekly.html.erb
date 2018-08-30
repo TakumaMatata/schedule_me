@@ -29,7 +29,7 @@
                 <div class = "lesson-card level-<%= lesson.course.level.downcase %>">
 
                   <div class= "lesson-time">
-                    <%= lesson.start_time.strftime('%H') %>:<%= lesson.start_time.strftime('%M') %>
+                    <%= lesson.start_time.strftime('%H:%M') %>
                   </div>
                   <div class="lesson-photo">
                   <%=cl_image_tag lesson.user.photo, class: "small-icon", style: "border-radius: 50%"%>
