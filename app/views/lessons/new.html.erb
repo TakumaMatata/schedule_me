@@ -8,6 +8,15 @@
       </div>
       <div class="form-imput">
         <%= simple_form_for @lesson, html: { class: "time-picker"} do |form| %>
+          <% if @lesson.errors.any? %>
+            <div class="errors-container">
+              <ul>
+                <% @lesson.errors.full_messages.each do |message| %>
+                  <li style="color:red;"><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
           <% if @lesson.start_time.present? %>
             <%= form.datetime_select :start_time, required: false %>
           <% else %>
