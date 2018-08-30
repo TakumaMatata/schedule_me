@@ -24,7 +24,7 @@
                 <%= f.button :submit, "save", class: 'btn btn-warning save-button margin-alignment'  %>
               <% end %>
             </li>
-            <li class="btn btn-danger delete-button margin-alignment">
+            <li class="margin-alignment">
               <%= link_to "delete the account", cancel_user_registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %>
             </li>
           <% end %>

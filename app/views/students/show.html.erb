@@ -40,16 +40,16 @@
           <ul class= "text-center">
           <% if current_user.role == "manager" %>
             <li class="change-photo">
-              <%= simple_form_for @student do |f| %>
+              <%= simple_form_for @student, html: {class: "users-show-alignment"} do |f| %>
                 <%= f.error_notification %>
                 <div style="text-align: center">
                   <%= f.input :photo, label: false%>
                 <%= f.input :photo_cache, as: :hidden %>
                 </div>
-                <%= f.button :submit, "save", class: 'btn btn-warning'  %>
+                <%= f.button :submit, "save", class: 'btn btn-warning save-button margin-alignment'  %>
               <% end %>
             </li>
-            <li class="delete-botton">
+            <li class="margin-alignment">
               <%= link_to "delete the student account", cancel_user_registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %>
             </li>
           <% end %>
