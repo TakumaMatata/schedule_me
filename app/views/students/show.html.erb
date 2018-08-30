@@ -1,5 +1,5 @@
 <div class="student-show">
-  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2">
     <div class="information-box">
       <div class="cover">
         <div class="show-information">
@@ -11,7 +11,7 @@
         </div>
       </div>
 
-      <div class="main">
+      <div class="main-student-page">
         <h1><%= @student.name %></h1>
         <h6><%= @student.birth_date.strftime("%B %e %Y") %></h6>
         <h6><%= @student.category %></h6>
@@ -23,15 +23,32 @@
               <p>No memo available yet</p>
             <% else %>
               <% @student.memos.each do |memo| %>
-                <div class="student-memo-item">
-                  <%= cl_image_tag memo.enrollment.lesson.user.photo, crop: :fill, class: "memo-teacher-pic"%>
-                  <div class="student-memo-details">
-                    <p>
+
+
+                <div class="student-memo-card">
+                  <p class="text-center level-<%= memo.enrollment.lesson.course.level.downcase%>" style="color: white"><strong>
                       <%= memo.enrollment.lesson.course.language %> - <%= memo.enrollment.lesson.course.level %>
-                    </p>
-                    <p><%= memo.comment %></p>
+                    </strong></p>
+                  <div class="memo-card-content">
+                    <div class="memo-item-picture">
+                      <%= link_to user_path(memo.enrollment.lesson.user) do %>
+                        <%= cl_image_tag memo.enrollment.lesson.user.photo, crop: :fill, class: "memo-teacher-pic"%>
+                      <% end %>
+                    </div>
+
+                   <!--  <div class="student-memo-details text-center level-<%= memo.enrollment.lesson.course.level.downcase%>"> -->
+                    <div class="student-memo-details text-center>">
+                      <p><%= memo.comment %></p>
+                    </div>
+
+                    <div class="memo-item-date">
+                      <%= memo.created_at.strftime("%b %d, %Y") %>
+                    </div>
                   </div>
+
                 </div>
+
+
               <% end %>
             <% end %>
           </div>
@@ -43,8 +60,8 @@
               <%= simple_form_for @student, html: {class: "users-show-alignment"} do |f| %>
                 <%= f.error_notification %>
                 <div style="text-align: center">
-                  <%= f.input :photo, label: false%>
-                <%= f.input :photo_cache, as: :hidden %>
+                  <%= f.input :photo, label: 'Profile picture:'%>
+                  <%= f.input :photo_cache, as: :hidden%>
                 </div>
                 <%= f.button :submit, "save", class: 'btn btn-warning save-button margin-alignment'  %>
               <% end %>
