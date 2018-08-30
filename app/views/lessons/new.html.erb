@@ -44,7 +44,7 @@
             <div class="form-group lesson-recurring">
             <%= simple_fields_for :recurring_check do |n| %>
             <%= n.input :recurring, as: :boolean, checked_value: true, unchecked_value: false %><p>for</p>
-            <%= n.select :weeks, (2..52) %> <p>weeks</p>
+            <%= n.select :weeks, (2..13) %> <p>weeks</p>
             <% end %>
             </div>
           <%= form.button :submit, class: "btn btn-primary button green-button" %>
