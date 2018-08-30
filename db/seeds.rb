@@ -10,9 +10,25 @@ Term.delete_all
 puts "Deleted all the past data"
 
 test_url = "https://kitt.lewagon.com/placeholder/users/takumamatata"
-test_user= User.new(email: "takuma@gmail.com", password: "123456", first_name: "Takuma", last_name: "Naruke", role: "manager")
-test_user.remote_photo_url = test_url
-test_user.save
+
+test_user_1 = User.new(email: "takuma@gmail.com", password: "123456", first_name: "Takuma", last_name: "Naruke", role: "manager")
+test_user_1.remote_photo_url = test_url
+test_user_1.save
+
+test_url = "https://kitt.lewagon.com/placeholder/users/kazeiu"
+test_user_2= User.new(email: "caleb@gmail.com", password: "123456", first_name: "Caleb", last_name: "Finley", role: "teacher")
+test_user_2.remote_photo_url = test_url
+test_user_2.save
+
+test_url = "https://kitt.lewagon.com/placeholder/users/non-b3"
+test_user_3 = User.new(email: "nozomi@gmail.com", password: "123456", first_name: "Nozomi", last_name: "Ishii", role: "teacher")
+test_user_3.remote_photo_url = test_url
+test_user_3.save
+
+test_url = "https://kitt.lewagon.com/placeholder/users/fumipi"
+test_user_4 = User.new(email: "fumiko@gmail.com", password: "123456", first_name: "Fumiko", last_name: "Toyoda", role: "teacher")
+test_user_4.remote_photo_url = test_url
+test_user_4.save
 
 10.times do
   url = "https://kitt.lewagon.com/placeholder/users/random"
