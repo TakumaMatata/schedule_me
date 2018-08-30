@@ -70,3 +70,14 @@
 #new_lesson {
   padding: 0 5px;
 }
+
+.green-button {
+  background-color: #56ac35;
+  padding: 10px 45px;
+  border:none;
+}
+
+.green-button:hover {
+  background-color: #56ac35;
+  opacity: 0.7;
+}
