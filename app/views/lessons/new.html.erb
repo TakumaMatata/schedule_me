@@ -8,8 +8,11 @@
       </div>
       <div class="form-imput">
         <%= simple_form_for @lesson, html: { class: "time-picker"} do |form| %>
-          <%= form.input :start_time, as: :string, required: false, input_html: {class: "datepicker", value: params[:start_time] } unless params[:start_time] %>
-          <%= form.datetime_select :start_time, value: params[:start_time], required: false if params[:start_time] %>
+          <% if @lesson.start_time.present? %>
+            <%= form.datetime_select :start_time, required: false %>
+          <% else %>
+            <%= form.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <% end %>
           <%= form.association :room, collection: Room.order('name'), label_method: :name,  prompt: "Choose a room" %>
           <%= form.association :course, collection: Course.order('level'), label_method: :course_name,  prompt: "Choose a course" %>
           <%#= form.association :user, label: :Teacher, collection: User.order('first_name'), label_method: :first_name,  prompt: "Choose a Teacher" %>
