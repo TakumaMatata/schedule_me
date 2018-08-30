@@ -45,3 +45,13 @@
 .shadow{
   text-shadow: 1px 1px 40px rgba(22, 23, 31, 0.4) !important;
 }
+
+.signup-button{
+  background-color: orange;
+  border: yellow;
+  padding: 15px 30px;
+}
+
+.signup-button:hover{
+  opacity: 0.8;
+}
