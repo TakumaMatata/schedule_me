@@ -107,7 +107,7 @@ end
 
 puts "Created #{Enrollment.count} lessons."
 
-comment = ["some comment", "some more comment", "different comment"]
+# comment = ["Great student!", "Very attentive", "strives to reach full potential", "Didn't do homework"]
 
 50.times do
   Memo.create(comment: comment.sample, enrollment_id: Enrollment.all.sample.id)
