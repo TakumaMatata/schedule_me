@@ -26,16 +26,14 @@
               <tr><td>
                 <%= link_to lesson_path(lesson) do %>
 
-                <div class = "lesson-card level-<%= lesson.course.level.downcase %>">
-
-                  <div class= "lesson-time">
-                    <%= lesson.start_time.strftime('%H:%M') %>
+                  <div class = "lesson-card level-<%= lesson.course.level.downcase %>">
+                    <div class= "lesson-time">
+                      <%= lesson.start_time.strftime('%H:%M') %>
+                    </div>
+                    <div class="lesson-photo">
+                    <%=cl_image_tag lesson.user.photo, class: "small-icon", style: "border-radius: 50%"%>
+                    </div>
                   </div>
-                  <div class="lesson-photo">
-                  <%=cl_image_tag lesson.user.photo, class: "small-icon", style: "border-radius: 50%"%>
-                  </div>
-                  </div>
-                </div>
                 <% end %>
               </td></tr>
             <% end %>
@@ -44,7 +42,7 @@
           <tr>
             <td>
               <%= link_to new_lesson_path(room_id: room.id, start_time: DateTime.new(date.year, date.month, date.day, h)) do %>
-                <div class = "lesson-card-vacant">XXXXXXXXXXXXXXXX</div>
+                <div class = "lesson-card-vacant">XXXXXXXXXXXXXX</div>
               <% end %>
             </td>
           </tr>

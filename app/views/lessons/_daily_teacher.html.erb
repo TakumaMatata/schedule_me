@@ -24,23 +24,43 @@
           <% if h==lesson.start_time.strftime('%H').to_i %>
             <% vacant_cell = false %>
             <tr>
-              <td><div class = "lesson-hour"><%= h %></div></td>
+              <td>
+                <div class = "lesson-hour">
+                  <%= h %>
+                </div>
+              </td>
               <td>
               <%= link_to lesson_path(lesson) do %>
-              <div class = "lesson-card level-<%= lesson.course.level.downcase %>">
-                Room: <%= lesson.room.name %>
-                <%= lesson.course.level %>
-                ,# of students:<%= lesson.students.count %>
-              </div>
+                <div class = "lesson-card mobile-view level-<%= lesson.course.level.downcase %>">
+                  <div class="lesson-room">
+                    Room: <%= lesson.room.name %>
+                  </div>
+                  <div class="lesson-level">
+                    <%= lesson.course.level %>
+                  </div>
+                  <div class="number-of-student">
+                    <% if lesson.students.count >= 4 %>
+                      <%= image_tag "student_hat.svg" , class: "small-icon", style: "border-radius: 50%"%> x <%= lesson.students.count
+                       %>
+                      <% else %>
+                      <% lesson.students.each do |student| %>
+                        <%= cl_image_tag student.photo.url, class: "small-icon", style: "border-radius: 50%"%>
+                      <% end %>
+                    <% end %>
+
+                  </div>
+                </div>
               <% end %>
             </td></tr>
           <% end %>
         <% end %>
+
+
       <% if vacant_cell %>
         <tr>
           <td><div class = "lesson-hour"><%= h %></div></td>
           <td>
-              <div class = "lesson-card-vacant">XXXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
+              <div class = "lesson-card-vacant">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
             <% end %>
           </td>
         </tr>

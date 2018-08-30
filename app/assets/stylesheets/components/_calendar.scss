@@ -1,5 +1,27 @@
+.mobile-view {
+  display: flex;
+  justify-content: space-around;
+}
+
+.number-of-student{
+
+  padding: 10px
+}
+.mobile-calendar-heading {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.teachers-calender  {
+
+}
 .username-mobile {
-  margin-bottom: 15px;
+  margin-bottom: 28px;
+}
+
+.date-str {
+  font-size: 26px;
+  padding-left: 29px;
 }
 
 body {
@@ -8,6 +30,9 @@ body {
 
 }
 
+.calendar-title-mobile {
+  font-size:24px;
+}
 .calendar-title {
   font-size: 32px;
 }
