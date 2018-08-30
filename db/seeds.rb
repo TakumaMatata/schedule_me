@@ -10,7 +10,7 @@ Term.delete_all
 puts "Deleted all the past data"
 
 test_url = "https://kitt.lewagon.com/placeholder/users/takumamatata"
-test_user= User.new(email: "test@gmail.com", password: "123456", first_name: "Takuma", last_name: "Naruke", role: "manager")
+test_user= User.new(email: "takuma@gmail.com", password: "123456", first_name: "Takuma", last_name: "Naruke", role: "manager")
 test_user.remote_photo_url = test_url
 test_user.save
 
@@ -45,8 +45,6 @@ levels.each do |l|
   course = Course.new(language:language, level: l, duration: 60, term: Term.first, user_id: User.first.id)
   course.save
 end
-
-puts Course.all
 
 category = "student"
 description = "some description"
