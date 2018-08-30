@@ -11,7 +11,8 @@
 .alert-info {
   background: $green;
   font-size: 0px;
-  height: 19px;
+  height: 0px;
+  border: 0px;
 }
 .alert-warning {
   background: $red;
