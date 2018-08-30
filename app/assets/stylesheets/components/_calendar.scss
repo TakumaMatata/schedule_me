@@ -1,16 +1,27 @@
+.username-mobile {
+  margin-bottom: 15px;
+}
+
 body {
-  margin-top: -35px;
+
+  margin-top: -60px;
+
 }
 
 .calendar-title {
-  font-size: 38px;
+  font-size: 32px;
+}
+.calender-body-week {
+  margin-top: -42px;
 }
 .calendar-heading-week{
   display: flex;
   justify-content: space-around;
   position: fixed;
-  width: 95%;
-
+  // width: 98%;
+}
+.today-date{
+  flex:0 0 auto;
 }
 .lesson-card {
   display: flex;

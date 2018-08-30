@@ -1,37 +1,55 @@
-<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-<h1>Welcome back, <%=@user.first_name%>!</h1>
-These are the lessons you teach.
-<%= calendar number_of_days:1, events: @lessons do |date, lessons| %>
-<table>
-<span class="date-str"><%= date %></span>
-  <% vacant_cell = true %>
-  <% (10..20).each do |h|%>
-    <% lessons.each do |lesson| %>
-      <% if h==lesson.start_time.strftime('%H').to_i %>
-        <% vacant_cell = false %>
+<div class="user-show">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3">
+    <div class="information-box">
+
+      <div class="cover">
+        <div class="show-information">
+          <% if current_user.photo.blank?%>
+            <%= image_tag "user.svg"%>
+          <% else %>
+            <%= cl_image_tag current_user.photo, crop: :fill, width: "120" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="main username-mobile">
+        <h1><%= @user.first_name %>  <%= @user.last_name %></h1>
+      </div>
+
+<div class="teachers-calender">
+  <%= calendar number_of_days:1, events: @lessons do |date, lessons| %>
+    <table>
+      <% vacant_cell = true %>
+      <% (10..20).each do |h|%>
+        <% lessons.each do |lesson| %>
+          <% if h==lesson.start_time.strftime('%H').to_i %>
+            <% vacant_cell = false %>
+            <tr>
+              <td><div class = "lesson-hour"><%= h %></div></td>
+              <td>
+              <%= link_to lesson_path(lesson) do %>
+              <div class = "lesson-card level-<%= lesson.course.level.downcase %>">
+                Room: <%= lesson.room.name %>
+                <%= lesson.course.level %>
+                ,# of students:<%= lesson.students.count %>
+              </div>
+              <% end %>
+            </td></tr>
+          <% end %>
+        <% end %>
+      <% if vacant_cell %>
         <tr>
           <td><div class = "lesson-hour"><%= h %></div></td>
           <td>
-          <%= link_to lesson_path(lesson) do %>
-          <div class = "lesson-card level-<%= lesson.course.level.downcase %>">
-            Room: <%= lesson.room.name %>
-            <%= lesson.course.level %>
-            ,# of students:<%= lesson.students.count %>
-          </div>
-          <% end %>
-        </td></tr>
+              <div class = "lesson-card-vacant">XXXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
+            <% end %>
+          </td>
+        </tr>
+        <% vacant_cell = true %>
       <% end %>
-    <% end %>
-  <% if vacant_cell %>
-    <tr>
-      <td><div class = "lesson-hour"><%= h %></div></td>
-      <td>
-          <div class = "lesson-card-vacant">XXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
-        <% end %>
-      </td>
-    </tr>
-    <% vacant_cell = true %>
+    </table>
   <% end %>
-</table>
-<% end %>
+</div>
+
+    </div>
+  </div>
 </div>
