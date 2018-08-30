@@ -23,10 +23,10 @@ end
 
 puts "Created #{User.count} users"
 
-Term.create(name: "1st semester", start_date: DateTime.new(2018,4,1,0), end_date: DateTime.new(2018,6,30,24))
+# Term.create(name: "1st semester", start_date: DateTime.new(2018,4,1,0), end_date: DateTime.new(2018,6,30,24))
 Term.create(name: "2nd semester", start_date: DateTime.new(2018,7,1,0), end_date: DateTime.new(2018,9,30,24))
-Term.create(name: "3rd semester", start_date: DateTime.new(2018,10,1,1), end_date: DateTime.new(2018,12,31,24))
-Term.create(name: "4th semester", start_date: DateTime.new(2019,1,1,0), end_date: DateTime.new(2018,3,31,24))
+# Term.create(name: "3rd semester", start_date: DateTime.new(2018,10,1,1), end_date: DateTime.new(2018,12,31,24))
+# Term.create(name: "4th semester", start_date: DateTime.new(2019,1,1,0), end_date: DateTime.new(2018,3,31,24))
 
 puts "Created #{Term.count} semesters for a year from #{DateTime.new(2018,4,1,0)} to #{DateTime.new(2018,3,31,24)}"
 
@@ -38,14 +38,15 @@ puts "Created #{Room.count} rooms from #{Room.first.name} to #{Room.last.name}"
 
 language = "English"
 levels = ["Novice", "Conversational", "Business", "Advanced"]
-durations = [30, 45, 60, 90]
+# durations = [30, 45, 60, 90]
 terms = Term.all
 
-terms.each do |t|
-  for num in 0..3 do
-    Course.create(language:language, level: levels[num], duration: durations[num], term_id: t.id, user_id: User.first.id)
-  end
+levels.each do |l|
+  course = Course.new(language:language, level: l, duration: 60, term: Term.first, user_id: User.first.id)
+  course.save
 end
+
+puts Course.all
 
 category = "student"
 description = "some description"
@@ -56,34 +57,34 @@ description = "some description"
   student_new.remote_photo_url = url
   student_new.save
 end
-puts "Created #{Student.count} lessons."
+puts "Created #{Student.count} students."
 
 user_id = User.first.id + 1
 course_id = Course.first.id
 room_id_1 = Room.first.id
-Lesson.create(start_time: DateTime.new(2018,9,3,9), course_id: course_id, user_id: user_id, room_id: room_id_1)
+Lesson.create(start_time: DateTime.new(2018,8,27,10), course_id: course_id, user_id: user_id, room_id: room_id_1)
 user_id = user_id + 1
 course_id = course_id + 1
 room_id_2 = room_id_1 + 1
-Lesson.create(start_time: DateTime.new(2018,9,3,9), course_id: course_id, user_id: user_id, room_id: room_id_2)
+Lesson.create(start_time: DateTime.new(2018,8,27,10), course_id: course_id, user_id: user_id, room_id: room_id_2)
 user_id = user_id + 1
 course_id = course_id + 1
 room_id_3 = room_id_2 + 1
-Lesson.create(start_time: DateTime.new(2018,9,3,9), course_id: course_id, user_id: user_id, room_id: room_id_3)
+Lesson.create(start_time: DateTime.new(2018,8,27,10), course_id: course_id, user_id: user_id, room_id: room_id_3)
 user_id = user_id + 1
 course_id = course_id + 1
-Lesson.create(start_time: DateTime.new(2018,9,3,11), course_id: course_id, user_id: user_id, room_id: room_id_1)
+Lesson.create(start_time: DateTime.new(2018,8,27,11), course_id: course_id, user_id: user_id, room_id: room_id_1)
 user_id = user_id + 1
-course_id = course_id + 1
-Lesson.create(start_time: DateTime.new(2018,9,3,13), course_id: course_id, user_id: user_id, room_id: room_id_2)
+course_id = course_id -1
+Lesson.create(start_time: DateTime.new(2018,8,27,13), course_id: course_id, user_id: user_id, room_id: room_id_2)
 user_id = user_id + 1
-course_id = course_id + 1
-Lesson.create(start_time: DateTime.new(2018,9,3,15), course_id: course_id, user_id: user_id, room_id: room_id_3)
+course_id = course_id -1
+Lesson.create(start_time: DateTime.new(2018,8,27,15), course_id: course_id, user_id: user_id, room_id: room_id_3)
 user_id = user_id + 1
-course_id = course_id + 1
-Lesson.create(start_time: DateTime.new(2018,9,4,9), course_id: course_id, user_id: user_id, room_id: room_id_1)
+course_id = course_id -1
+Lesson.create(start_time: DateTime.new(2018,8,28,9), course_id: course_id, user_id: user_id, room_id: room_id_1)
 
-puts "Created #{Lesson.count} lessons in the 1st week of September 2018"
+puts "Created #{Lesson.count} lessons in the last week of August 2018"
 
 lessons = Lesson.all
 lessons.each do |l|
