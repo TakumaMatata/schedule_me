@@ -112,6 +112,18 @@ students = [
   },
     { name: "Tomomi Shiba",
     url: "https://kitt.lewagon.com/placeholder/users/tomcana"
+  },
+  { name: "George Kettle",
+    url: "https://kitt.lewagon.com/placeholder/users/georgekettle"
+  },
+  { name: "Georges Lorré",
+    url: "https://kitt.lewagon.com/placeholder/users/GeorgesLorre"
+  },
+  { name: "George Delori",
+    url: "https://kitt.lewagon.com/placeholder/users/Georgedelori"
+  },
+  { name: "George Cubas",
+    url: "https://kitt.lewagon.com/placeholder/users/mateBarey"
   }
 ]
 
