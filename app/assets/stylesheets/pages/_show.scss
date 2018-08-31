@@ -1,4 +1,21 @@
-
+.susumu-icon {
+  padding: 5px
+}
+.calendar-heading-content {
+  display: flex;
+  text-align:center;
+}
+.level-list-box {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  border-radius:2%;
+  padding: 2px;
+  width:150px;
+}
+.level-list {
+  color: #F9F9F9;
+  padding-left:25px;
+  padding-top: 4px;
+}
 .form-structure {
   display: flex;
 }
@@ -62,12 +79,6 @@
   background-color: $yellow;
   opacity: 0.7;
 }
-
-// .details-novice {
-//   background-color: $yellow;
-//   opacity: 0.7;
-//   color: white;
-// }
 
 .level-conversational {
   background-color: $green;
