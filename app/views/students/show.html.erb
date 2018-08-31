@@ -16,6 +16,21 @@
         <h6><%= @student.birth_date.strftime("%B %e %Y") %></h6>
         <h6><%= @student.category %></h6>
 
+        <div class = "student-lessons" >
+          <h3><%= @student.name.split(" ").first %>'s lessons</h3>
+            <div class = "student-lessons-list">
+            <% @student.lessons.each do |l| %>
+              <div class = "student-lesson-card">
+              <%= link_to lesson_path(l) do %>
+              <%= l.start_time.strftime("%H:%M, %b %d") %>
+               <% end %>
+              </div>
+            <% end %>
+            </div>
+        </div>
+
+        </div>
+
         <div class="student-memo">
           <h3>Memo from teachers</h3>
           <div class="student-memo-list">
