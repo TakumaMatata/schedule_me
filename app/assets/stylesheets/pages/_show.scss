@@ -241,6 +241,7 @@
 .main-student-page {
     padding: 60px 0;
     text-align: center;
+    padding-bottom: 0;
 }
 .main-student-page h1 {
     text-align: center;
@@ -279,7 +280,7 @@
 .student-lessons-list {
   display: flex;
   flex-direction: row;
-  overflow: auto;
+  overflow-x: scroll;
 }
 
 .student-lesson-card {
@@ -296,6 +297,7 @@
   p {
     border-radius: 3px;
   }
+  min-width: 119px;
 }
 
 
@@ -310,7 +312,7 @@
 
 }
 .student-memo h3 {
-  margin-top: 50px;
+  margin-top: -30px;
   background-color: #88C6CC;
   padding: 3px;
   color: white;
