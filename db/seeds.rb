@@ -154,8 +154,11 @@ puts "Created #{Lesson.count} lessons in the 3 weeks from 20 August 2018"
 
 lessons = Lesson.all
 lessons.each do |l|
+  students = Student.all.shuffle
+  i = 0
   rand(3..5).times do
-    Enrollment.create(lesson_id: l.id, student_id: Student.all.sample.id)
+    Enrollment.create(lesson_id: l.id, student_id: students[i].id)
+    i = i + 1
   end
 end
 

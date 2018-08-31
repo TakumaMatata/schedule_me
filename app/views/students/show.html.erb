@@ -19,7 +19,8 @@
         <div class = "student-lessons" >
           <h3><%= @student.name.split(" ").first %>'s lessons</h3>
             <div class = "student-lessons-list">
-              <% @student.lessons.each do |l| %>
+              <% student_lessons = @student.lessons.all.sort %>
+              <% student_lessons.each do |l| %>
                 <div class="student-lesson-card">
                   <%= link_to lesson_path(l) do %>
                     <div class = "student-lesson-card-information">
