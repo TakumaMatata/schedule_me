@@ -1,8 +1,7 @@
-<div class="simple-calendar">
-  <div class="calendar-heading-week">
+<div class="calendar-heading-week">
     <div class="calendar-heading-content">
       <%= link_to calendar.url_for_previous_view do %>
-        <i class="fas fa-caret-left fa-2x"></i>
+        <i class="fas fa-caret-left fa-2x susumu-icon"></i>
       <% end %>
       <% if calendar.number_of_weeks == 1 %>
         <span class="calendar-title">Week <%= calendar.week_number %></span>
@@ -10,8 +9,30 @@
           <span class="calendar-title">Week <%= calendar.week_number %> - <%= calendar.end_week %></span>
       <%end%>
       <%= link_to  calendar.url_for_next_view do %>
-        <i class="fas fa-caret-right fa-2x"></i>
+        <i class="fas fa-caret-right fa-2x susumu-icon"></i>
       <% end %>
+      <div>
+        <ul class="level-list list-inline">
+          <li class="level-novice level-list-box">
+            novice
+          </li>
+          <li class="level-conversational level-list-box">
+            conversational
+          </li>
+          <li class="level-business level-list-box">
+            business
+          </li>
+          <li class="level-advanced level-list-box">
+            advanced
+          </li>
+        </ul>
+
+      </div>
+
+
+
+
+      </div>
     </div>
   </div>
 </div>
