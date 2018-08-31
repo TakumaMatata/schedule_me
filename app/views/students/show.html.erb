@@ -19,13 +19,20 @@
         <div class = "student-lessons" >
           <h3><%= @student.name.split(" ").first %>'s lessons</h3>
             <div class = "student-lessons-list">
-            <% @student.lessons.each do |l| %>
-              <div class = "student-lesson-card">
-              <%= link_to lesson_path(l) do %>
-              <%= l.start_time.strftime("%H:%M, %b %d") %>
-               <% end %>
-              </div>
-            <% end %>
+              <% @student.lessons.each do |l| %>
+                <div class="student-lesson-card">
+                  <%= link_to lesson_path(l) do %>
+                    <div class = "student-lesson-card-information">
+                      <div class="lesson-card-day">
+                        <%= l.start_time.strftime("%b %d") %>
+                      </div>
+                      <div class="lesson-card-time">
+                        <%= l.start_time.strftime("%H:%M") %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
             </div>
         </div>
 

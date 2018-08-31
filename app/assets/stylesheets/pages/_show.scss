@@ -1,3 +1,4 @@
+
 .form-structure {
   display: flex;
 }
@@ -284,20 +285,57 @@
 }
 
 .student-lesson-card {
+  border-radius: 2%;
   display: flex;
   flex-direction: column;
   // align-items: center;
   // justify-content:space-around;
   // padding-left: 25%;
-  width: 200px;
+  width: 101px;
   margin: 12px 0px;
-  padding-bottom: 20px;
   // border-bottom: 1px solid grey;
   box-shadow: 1px 3px 1px #f1f1f1;
   p {
     border-radius: 3px;
   }
-  min-width: 119px;
+  min-width: 100px;
+  a {
+    padding: 18px;
+  }
+}
+
+.student-lesson-card {
+  &:hover{
+    color: white;
+    text-decoration: none;
+    background-color: #88C6CC;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+    a, a:hover {
+      text-decoration: none;
+      div {
+        color: white;
+      }
+    }
+  }
+}
+.student-lesson-card-information {
+  text-decoration: none;
+  flex-direction: column;
+  color: #88C6CC;
+}
+.student-lesson-card-information:hover {
+  width:110;
+  color: white;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all  0.3s ease;
+  a {
+    text-decoration: none;
+  }
 }
 
 
