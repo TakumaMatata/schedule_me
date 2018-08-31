@@ -59,9 +59,6 @@ students = [
   { name: "Ableen Tai",
     url: "https://kitt.lewagon.com/placeholder/users/ableen",
     },
-  { name: "George Walden",
-    url: "https://kitt.lewagon.com/placeholder/users/Georgewwalden7",
-    },
   { name: "David Li",
     url: "https://kitt.lewagon.com/placeholder/users/DavidLi920",
    },
@@ -184,3 +181,8 @@ comment = ["Pronunciation has improved drastically.", "Needs extra help with spe
 end
 
 puts "Created #{Memo.count} memos."
+
+george_url = "https://kitt.lewagon.com/placeholder/users/Georgewwalden7"
+student_new = Student.new(name: "George Walden", birth_date: DateTime.new(2001,11,11,11), category: "student")
+student_new.remote_photo_url = george_url
+student_new.save
