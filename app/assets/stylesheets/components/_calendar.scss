@@ -135,6 +135,25 @@ body {
     margin: 3px;
     height: 35px;
   }
+  .level-novice:hover {
+    background-color: $yellow;
+    opacity: 1
+  }
+
+  .level-conversational:hover {
+    background-color: $green;
+    opacity: 1
+  }
+
+  .level-business:hover {
+    background-color: $blue;
+    opacity: 1
+  }
+
+  .level-advanced:hover {
+    background-color: $red;
+    opacity: 1
+  }
 
   .level-novice {
     background-color: $yellow;
