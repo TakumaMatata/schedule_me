@@ -119,7 +119,7 @@ category = "student"
 
 students.each do |s|
   url = s[:url]
-  student_new = Student.new(name: s[:name], birth_date: Faker::Time.between(50.years.ago, 6.years.ago, period = :all), category: category)
+  student_new = Student.new(name: s[:name], birth_date: Faker::Time.between(40.years.ago, 6.years.ago, period = :all), category: category)
   student_new.remote_photo_url = url
   student_new.save
 end
@@ -132,32 +132,29 @@ end
 end
 puts "Created #{Student.count} students."
 
-user_id_1 = User.first.id + 1
-course_id = Course.first.id
-room_id_1 = Room.first.id
-Lesson.create(start_time: DateTime.new(2018,8,27,10), course_id: course_id, user_id: user_id_1, room_id: room_id_1)
-user_id_2 = user_id_1 + 1
-course_id = course_id + 1
-room_id_2 = room_id_1 + 1
-Lesson.create(start_time: DateTime.new(2018,8,27,10), course_id: course_id, user_id: user_id_2, room_id: room_id_2)
-user_id_3 = user_id_2 + 1
-course_id = course_id + 1
-room_id_3 = room_id_2 + 1
-Lesson.create(start_time: DateTime.new(2018,8,27,10), course_id: course_id, user_id: user_id_3, room_id: room_id_3)
-course_id = course_id + 1
-Lesson.create(start_time: DateTime.new(2018,8,27,11), course_id: course_id, user_id: user_id_3, room_id: room_id_1)
-course_id = course_id -1
-Lesson.create(start_time: DateTime.new(2018,8,27,13), course_id: course_id, user_id: user_id_2, room_id: room_id_2)
-course_id = course_id -1
-Lesson.create(start_time: DateTime.new(2018,8,27,15), course_id: course_id, user_id: user_id_1, room_id: room_id_3)
-course_id = course_id -1
-Lesson.create(start_time: DateTime.new(2018,8,28,9), course_id: course_id, user_id: user_id_1, room_id: room_id_1)
+start_time = DateTime.new(2018,8,20,10)
+courses = Course.all
+teachers = User.all[1..3]
+rooms = Room.all
 
-puts "Created #{Lesson.count} lessons in the last week of August 2018"
+21.times do
+  10.times do
+    teachers = teachers.shuffle
+    i = 0
+    rooms.sample(rand(1..3)).each do |r|
+      Lesson.create(start_time: start_time, course_id: courses.sample.id, user_id: teachers[i].id, room_id: r.id)
+      i = i + 1
+    end
+      start_time = start_time + 1.hour
+  end
+  start_time = start_time + 1.day - 10.hours
+end
+
+puts "Created #{Lesson.count} lessons in the 3 weeks from 20 August 2018"
 
 lessons = Lesson.all
 lessons.each do |l|
-  5.times do
+  rand(3..5).times do
     Enrollment.create(lesson_id: l.id, student_id: Student.all.sample.id)
   end
 end
@@ -167,7 +164,7 @@ puts "Created #{Enrollment.count} lessons."
 comment = ["Pronunciation has improved drastically.", "Needs extra help with spelling.", "Has difficulty with past tense.",
 "Learns new target structures quickly."]
 
-50.times do
+100.times do
   Memo.create(comment: comment.sample, enrollment_id: Enrollment.all.sample.id)
 end
 
