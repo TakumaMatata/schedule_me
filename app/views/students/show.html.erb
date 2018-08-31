@@ -24,7 +24,9 @@
                   <%= link_to lesson_path(l) do %>
                     <div class = "student-lesson-card-information">
                       <div class="lesson-card-day">
-                        <%= l.start_time.strftime("%b %d") %>
+                        <strong>
+                          <%= l.start_time.strftime("%b %d") %>
+                        </strong>
                       </div>
                       <div class="lesson-card-time">
                         <%= l.start_time.strftime("%H:%M") %>

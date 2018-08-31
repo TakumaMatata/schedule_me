@@ -293,14 +293,14 @@
   // align-items: center;
   // justify-content:space-around;
   // padding-left: 25%;
-  width: 101px;
+  width: 95px;
   margin: 12px 0px;
   // border-bottom: 1px solid grey;
   box-shadow: 1px 3px 1px #f1f1f1;
   p {
     border-radius: 3px;
   }
-  min-width: 100px;
+  min-width: 94px;
   a {
     padding: 18px;
   }
@@ -308,13 +308,14 @@
 
 .student-lesson-card {
   &:hover{
+    width: 100px;
     color: white;
     text-decoration: none;
     background-color: #88C6CC;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all  0.3s ease;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    transition: all  0.6s ease;
     a, a:hover {
       text-decoration: none;
       div {
