@@ -100,19 +100,35 @@
   border: 2px solid  $yellow;
   opacity: 0.7;
 }
-
+.card-level-novice:hover {
+  background-color: $yellow;
+  opacity: 0.7;
+}
 .card-level-conversational {
   border: 2px solid  $green;
   opacity: 0.7;
 }
+.card-level-conversational:hover {
+  background-color: $green;
+  opacity: 0.7;
+}
+
 
 .card-level-business {
   border: 2px solid  $blue;
   opacity: 0.7;
 }
+.card-level-business:hover {
+  background-color: $blue;
+  opacity: 0.7;
+}
 
 .card-level-advanced {
-  border: 2px solid  $red;
+  border: 2px solid $red;
+  opacity: 0.7;
+}
+.card-level-advanced:hover {
+  background-color:  $red;
   opacity: 0.7;
 }
 
